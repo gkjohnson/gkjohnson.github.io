@@ -2,7 +2,13 @@
 <html>
 <head>
     <title>Garrett Johnson</title>
+
+    <!--
+        TODO: Host and bundle these locally
+    -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <style> 
         html, body {
             margin: 0;
@@ -21,6 +27,29 @@
             height: 100%;
             width: 100%;
         }
+
+        #icons {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 10px 5px;
+            font-size: 0;
+        }
+
+        #icons .fa {
+            font-size: 28px;
+            padding: 0 5px;
+            color: black;
+        }
+
+        a {
+            opacity: 0.2;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body>
@@ -28,6 +57,18 @@
         <div><span id="name">Garrett Johnson</span></div>
         <span id="email">garrett.kjohnson@gmail.com</span>
     </td></tr></table>
+
+    <div id="icons">
+        <a href="https://github.com/gkjohnson">
+            <i class="fa fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/garrett-johnson-30302950/">
+            <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/gkjohnso/">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
 
     <script>
         const nameel = document.querySelector('#name')
