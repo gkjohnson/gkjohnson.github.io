@@ -22,12 +22,21 @@
             font-family: Roboto, helvetica, arial, sans-serif;
             text-align: center;
             font-weight: lighter;
-            font-size: 60px;
+
+            animation: fade 3s ease;
         }
 
         table {
             height: 100%;
             width: 100%;
+        }
+
+        #name {
+            font-size: 60px;
+        }
+
+        #email {
+            font-size: 33.5px;
         }
 
         #icons {
@@ -53,9 +62,18 @@
             opacity: 0.6;
         }
         
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         @media (max-width: 500px) {
-    		body {
-            	font-size:14vw;
+    		#name {
+            	font-size:13vw;
+            }
+
+            #email {
+                font-size: 7.35vw;
             }
         }
     </style>
@@ -77,41 +95,5 @@
             <i class="fa fa-instagram"></i>
         </a>
     </div>
-
-    <script>
-        const nameel = document.querySelector('#name')
-        const mailel = document.querySelector('#email')
-        
-        const compstyle = window.getComputedStyle(nameel)
-        const width = nameel.offsetWidth
-        const fontsz = parseFloat(compstyle.fontSize)
-
-        let currsz = fontsz
-        
-        // Find the ideal font-size for the name and
-        // email to be the same width
-        const _stepFont = () => {
-            const cs = window.getComputedStyle(mailel)
-            const mailwidth = mailel.offsetWidth
-            const deltawidth = width - mailwidth
-            const ratio = deltawidth / mailwidth
-            
-            const newfontsz = currsz * (1 + ratio/2)
-
-            mailel.style.fontSize = `${newfontsz}px`
-
-            currsz = newfontsz
-        }
-
-        window.addEventListener('resize', () => {   
-            mailel.style.display = 'inline'
-
-            for(let i = 0; i < 10; i ++) {
-                _stepFont()
-            }
-
-            mailel.style.display = 'block'
-        })
-    </script>
 </body>
 </html>
