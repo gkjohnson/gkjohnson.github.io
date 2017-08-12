@@ -52,6 +52,12 @@
         a:hover {
             opacity: 0.6;
         }
+        
+        @media (max-width: 500px) {
+    		body {
+            	font-size:14vw;
+            }
+        }
     </style>
 </head>
 <body>
@@ -97,11 +103,15 @@
             currsz = newfontsz
         }
 
-        for(let i = 0; i < 10; i ++) {
-            _stepFont()
-        }
+        window.addEventListener('resize', () => {   
+            mailel.style.display = 'inline'
 
-        mailel.style.display = 'block'
+            for(let i = 0; i < 10; i ++) {
+                _stepFont()
+            }
+
+            mailel.style.display = 'block'
+        })
     </script>
 </body>
 </html>
