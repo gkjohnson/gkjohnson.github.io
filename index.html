@@ -30,7 +30,10 @@
         }
 
         document.onreadystatechange = () => {
-            requestAnimationFrame(() => document.body.scrollTop = 0)
+            if (document.readyState === 'interactive') {
+                requestAnimationFrame(() => document.body.scrollTop = 0)
+            }
+            
             updateTitlePos()
         }
 

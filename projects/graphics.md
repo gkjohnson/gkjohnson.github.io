@@ -1,6 +1,6 @@
 # College
 ## Learning Graphics
-### Final Project
+### Major Final Project
 ##### 2012
 ![](https://github.com/gkjohnson/ascension-game/raw/master/docs/screenshot3.png 0 100)
 
