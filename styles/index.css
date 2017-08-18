@@ -93,17 +93,15 @@ a:hover {
 
 /* Stuck Headers */
 sticky-element {
-    display: block;
-    height: 0;
-
-}
-
-sticky-element #icons {
     position: absolute;
-    right: 0;
     bottom: 0;
+    width: 100%;
 }
 
-sticky-element[stuck] #icons {
-    top: 0;
+#icons {
+    display: flex;
+}
+
+#icons .buffer {
+    flex: 1;
 }

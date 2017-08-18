@@ -33,7 +33,7 @@
             if (document.readyState === 'interactive') {
                 requestAnimationFrame(() => document.body.scrollTop = 0)
             }
-            
+
             updateTitlePos()
         }
 
@@ -50,11 +50,10 @@
                 <div id="email">garrett.kjohnson@gmail.com</div>
             </div>
         </div>
-    </div>
 
-    <div id="content">
         <sticky-element>
             <div id="icons">
+                <div class="buffer"></div>
                 <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson" title="Github">
                     <i class="fa fa-github"></i>
                 </a>
@@ -66,7 +65,9 @@
                 </a>
             </div>
         </sticky-element>
-        
+    </div>
+
+    <div id="content">
         <div id="projects" class="markdown">
             <markdown-element href="../projects/about.md"></markdown-element>
 

@@ -1,19 +1,23 @@
 <dom-module id="sticky-element">
     <template>
         <style type="text/css">
-            #content {
+/*            #content {
                 height: 1px;
                 width: 100%;
                 position: relative;
             }
-            
+
+            */
             #content[stuck] {
                 position: fixed;
                 top: 0;
+                width: 100%;
             }
         </style>
-        <div id="content" stuck$="[[stuck]]">
-            <slot></slot>
+        <div id="wrapper">
+            <div id="content" stuck$="[[stuck]]">
+                <slot></slot>
+            </div>
         </div>
     </template>
 </dom-module>
@@ -36,14 +40,13 @@
                 super.connectedCallback()
                 
                 let ogHeight = 0
+                const wrapper = this.shadowRoot.querySelector('#wrapper')
+                const content = this.shadowRoot.querySelector('#content')
                 this._scrollFunc = () => {
-                    const el = this.querySelector('*') || this
-                    ogHeight = ogHeight || el.clientHeight
+                    if (!this.stuck) wrapper.style = `height:${content.clientHeight}px`
 
-                    const ogtop =this.getBoundingClientRect().top; 
-                    this.stuck = this.getBoundingClientRect().top - ogHeight <= 0
+                    this.stuck = wrapper.getBoundingClientRect().top  <= 0
                 }
-                this._scrollFunc()
                 window.addEventListener('scroll', this._scrollFunc)
             }
 
