@@ -30,12 +30,11 @@
             connectedCallback() {
                 super.connectedCallback()
                 
-
                 this._scrollFunc = () => {
                     const el = this.querySelector('*') || this
                     const height = el.offsetHeight
 
-                    this.stuck = this.getBoundingClientRect().top - height < 0
+                    this.stuck = this.getBoundingClientRect().top - height <= 0
                 }
                 this._scrollFunc()
                 window.addEventListener('scroll', this._scrollFunc)

@@ -1,0 +1,110 @@
+/* Animations */
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Overrides */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    animation: fade 3s ease;
+
+    font-family: Roboto, helvetica, arial, sans-serif;
+    font-weight: lighter;
+
+    /* 
+        Material Color
+        Blue Gray 800
+    */
+    color: #37474F;
+}
+
+h5 {
+    /* 
+        Material Color
+        Blue Gray 200
+    */
+    color: #B0BEC5;
+    margin: 5px;
+}
+
+a {
+    color: inherit;
+    opacity: 0.25;
+    transition: opacity .25s ease;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+.fa {
+    font-size: 28px;
+    padding: 0 5px;
+}
+
+/* Title Section */
+#title {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+#title .center-container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+
+#title .content {
+    margin-top: -60px;
+}
+
+#name {
+    text-align: center;
+    font-size: 60px;
+}
+
+#email {
+    text-align: center;
+    font-size: 33.5px;
+}
+
+#icons {
+    padding: 10px 5px;
+    font-size: 0;
+}
+
+
+#projects {
+    max-width: 1000px;
+    margin: auto;
+}
+
+#name-box .buffer {
+    flex: 1;
+}
+
+/* Stuck Headers */
+sticky-element {
+    display: block;
+}
+
+sticky-element:not([stuck]) {
+    height: 0;
+}
+
+sticky-element #icons {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+sticky-element[stuck] #icons {
+    top: 0;
+}

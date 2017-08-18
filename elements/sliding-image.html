@@ -1,0 +1,86 @@
+<dom-module id="sliding-image">
+    <template>
+        <style type="text/css">
+            :host {
+                display: block;
+                background-position: center;
+                background-size: cover;
+                height: 300px;
+                position: relative;
+            }
+        </style>
+    </template>
+</dom-module>
+<script type="text/javascript">
+    (function() {
+        class SlidingImage extends Polymer.Element {
+            static get is() { return 'sliding-image' }
+
+            static get properties() {
+                return {
+                    src: {
+                        type: String,
+                        value: null,
+                        reflectToAttribute: true
+                    },
+
+                    ratio: {
+                        type: Number,
+                        value: 0
+                    },
+
+                    minPerc: {
+                        type: Number,
+                        value: 35
+                    },
+
+                    maxPerc: {
+                        type: Number,
+                        value: 65
+                    }
+                }
+            }
+
+            static get observers() {
+                return ['_styleObserver(src, ratio, minPerc, maxPerc)']
+            }
+
+            _styleObserver(src, ratio, min, max) {
+                src = this.resolveUrl(src)
+
+                const lerp = (from, to, ratio) => from + (to - from) * ratio
+                const perc = lerp(min, max, ratio)
+                this.style = `
+                    background-image:url(${src});
+                    background-position-y:${perc}%;
+                `
+            }
+
+            connectedCallback() {
+                super.connectedCallback()
+
+                this._scrollFunc = () => {
+                    const rect = this.getBoundingClientRect()
+                    const maxHeight = window.innerHeight + this.clientHeight / 2
+                    const dist = rect.top + this.clientHeight / 2
+                    const ratio = dist / maxHeight
+
+                    this.ratio = ratio
+
+                }
+                this._scrollFunc()
+                window.addEventListener('scroll', this._scrollFunc)
+                window.addEventListener('resize', this._scrollFunc)
+            }
+
+            disconnectedCallback() {
+                super.disconnectedCallback()
+                window.removeEventListener('scroll', this._scrollFunc)
+                window.removeEventListener('resize', this._scrollFunc)
+            }
+
+        }
+        customElements.define(SlidingImage.is, SlidingImage)
+
+    })()
+</script>

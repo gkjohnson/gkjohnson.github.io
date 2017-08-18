@@ -1,0 +1,29 @@
+markdown-element {
+    display: block;
+    margin-bottom: 200px;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown p {
+    max-width: 800px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0 20px;
+}
+
+.markdown h1,
+.markdown h2 {
+    max-width: 840px;
+}
+
+.markdown p {
+    font-weight: 300;
+}
+
+.markdown sliding-image {
+    height: 250px;
+}

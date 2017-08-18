@@ -6,162 +6,76 @@
     <title>Garrett Johnson</title>
 
     <!-- TODO: Host and bundle these locally -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <script type="text/javascript" src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="./node_modules/@polymer/polymer/polymer-element.html"/>
     <link rel="import" href="./elements/sticky-element.html"/>
-    <style> 
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
+    <link rel="import" href="./elements/markdown-element.html"/>
 
-        body {
-            font-family: Roboto, helvetica, arial, sans-serif;
-            text-align: center;
-            font-weight: lighter;
+    <link rel="stylesheet" type="text/css" href="./styles/index.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles/markdown-styles.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles/media.css"/>
 
-            animation: fade 3s ease;
-        }
-
-        table {
-            height: 100%;
-            width: 100%;
-        }
-
-        #name {
-            font-size: 60px;
-        }
-
-        #email {
-            font-size: 33.5px;
-        }
-
-        #icons {
-            padding: 10px 5px;
-            font-size: 0;
-        }
-
-        #icons .fa {
-            font-size: 28px;
-            padding: 0 5px;
-            color: black;
-        }
-
-        #icons a {
-            opacity: 0.25;
-            transition: opacity .25s ease;
-        }
-
-        #icons a:hover {
-            opacity: 1;
-        }
-        
-        @keyframes fade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @media (max-width: 500px) {
-    		#name {
-            	font-size:13vw;
-            }
-
-            #email {
-                font-size: 7.35vw;
-            }
-        }
-
-        #name-box {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100%;
-            position: absolute;
-        }
-
-        #name-box .buffer {
-            flex: 1;
-        }
-
-        .title-buffer {
-            height: 100vh;
-        }
-
-        sticky-element {
-            display: block;
-        }
-
-        sticky-element #icons {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-        }
-
-        sticky-element[stuck] #icons {
-            top: 0;
-        }
-
-        sticky-element #header-name {
-            position: absolute;
-            left: 0;
-            padding: 10px;
-            font-size: 25px;
-            opacity: 0;
-
-            transition: opacity .1s ease;
-        }
-
-        sticky-element[stuck] #header-name {
-            transition: opacity 1s ease;
-
-            opacity: 0.75;
-        }
-
-        sticky-element:not([stuck]) {
-            height: 0;
-        }
-    </style>
     <script type="text/javascript">
+        const updateTitlePos = () => {
+            const el = document.querySelector('#title .center-container')
+            const ratio = document.body.scrollTop / window.innerHeight
+
+            const lerp = (a, b, r) => a + (b - a) * r
+            const pos = lerp(50, 90, ratio)
+            const opacity = lerp(1, 0, ratio)
+            el.style = `top: ${pos}%; opacity: ${opacity}`
+        }
+
         document.onreadystatechange = () => {
             requestAnimationFrame(() => document.body.scrollTop = 0)
+            updateTitlePos()
         }
+
+        window.addEventListener('scroll', () => updateTitlePos())
+
     </script>
 </head>
 <body>
-    <div id="name-box">
-        <div class="buffer"></div>               
-        <div id="name">Garrett Johnson</div>
-        <div id="email">garrett.kjohnson@gmail.com</div>
-        <div class="buffer"></div>
+    <div id="title">
+
+        <div class="center-container">
+            <div class="content">
+                <div id="name">Garrett Johnson</div>
+                <div id="email">garrett.kjohnson@gmail.com</div>
+            </div>
+        </div>
     </div>
 
     <div id="content">
-        <div class="title-buffer"></div>
-
         <sticky-element>
             <div id="icons">
-                <a href="https://github.com/gkjohnson" title="Github">
+                <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson" title="Github">
                     <i class="fa fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/garrett-kjohnson/" title="LinkedIn">
+                <a referrer="noopener noreferrerr" target="_blank" href="https://www.linkedin.com/in/garrett-kjohnson/" title="LinkedIn">
                     <i class="fa fa-linkedin"></i>
                 </a>
-                <a href="https://www.instagram.com/gkjohnso/" title="Instagram">
+                <a referrer="noopener noreferrerr" target="_blank" href="https://www.instagram.com/gkjohnso/" title="Instagram">
                     <i class="fa fa-instagram"></i>
                 </a>
             </div>
         </sticky-element>
-        <sticky-element>
-            <div id="header-name">Garrett Johnson</div>
-        </sticky-element>
+        
+        <div id="projects" class="markdown">
+            <markdown-element href="../projects/about.md"></markdown-element>
 
-        <div class="title-buffer"></div>
-        <div class="title-buffer">TEST</div>
-        <div class="title-buffer">TEST</div>
+            <markdown-element href="../projects/protospace.md"></markdown-element>
+            <markdown-element href="../projects/ime.md"></markdown-element>
+            <markdown-element href="../projects/sidekick.md"></markdown-element>
+            <markdown-element href="../projects/hrs.md"></markdown-element>
+            <markdown-element href="../projects/sequencing.md"></markdown-element>
+            
+            <!-- <markdown-element href="../projects/graphics.md"></markdown-element> -->
+
+        </div>
     </div>
 </body>
 </html>

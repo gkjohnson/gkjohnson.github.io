@@ -1,0 +1,13 @@
+@media (max-width: 500px) {
+    #name {
+        font-size:13vw;
+    }
+
+    #email {
+        font-size: 7.35vw;
+    }
+
+    sliding-image {
+        height: 150px;
+    }
+}

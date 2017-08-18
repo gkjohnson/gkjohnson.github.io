@@ -1,0 +1,75 @@
+<script type="text/javascript" src="../node_modules/marked/marked.min.js"></script>
+<link rel="import" href="./sliding-image.html">
+
+<dom-module id="markdown-element">
+    <template>
+        <style type="text/css">
+            :host {
+                display: block;
+            }
+        </style>
+    </template>
+</dom-module>
+<script type="text/javascript">
+    (function() {
+        class MarkdownElement extends Polymer.Element {
+            static get is() { return 'markdown-element' }
+
+            static get properties() {
+                return {
+                    href: {
+                        type: String,
+                        value: null,
+                        observer: '_hrefObserver'
+                    }
+                }
+            }
+
+            ready() {
+                super.ready()
+
+                console.log(marked('this is _markdown_'))
+            }
+
+            _hrefObserver(href) {
+                if (!href) return
+
+                const renderer = new marked.Renderer()
+                renderer.image = (href, title, text) => {
+                    const split = href.split(' ')
+                    const min = split[1]
+                    const max = split[2]
+                    href = split[0]
+
+                    return `<sliding-image
+                        title="${text}"
+                        src="${href}"
+                        min-perc="${min}"
+                        max-perc="${max}"
+                    >
+                    </sliding-image>
+                    <p title="${text}" class="image-description">${text}</p>`
+                }
+
+                renderer.paragraph = text => {
+
+                    if (/<sliding-image/g.test(text)) return text
+                    else return `<p>${text}</p>`
+                }
+
+                fetch(href)
+                    .then(res => res.text())
+                    .then(text => {
+
+
+                        this.innerHTML = marked(text, { renderer })
+                    })
+            }
+
+            _attachDom(d) { this.appendChild(d) }
+
+        }
+        customElements.define(MarkdownElement.is, MarkdownElement)
+
+    })()
+</script>
