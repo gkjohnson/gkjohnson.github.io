@@ -13,6 +13,8 @@ markdown-element {
     margin-left:auto;
     margin-right:auto;
     padding: 0 20px;
+
+    border-left: 2px solid transparent;
 }
 
 .markdown h1,
@@ -22,8 +24,14 @@ markdown-element {
 
 .markdown p {
     font-weight: 300;
+    /*
+        Material Color
+        Deep Orange 500
+    */
+    border-left-color: #FF5722;
 }
 
 .markdown sliding-image {
     height: 250px;
+    margin: auto;
 }
