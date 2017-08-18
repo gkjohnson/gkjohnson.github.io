@@ -41,7 +41,6 @@
         }
 
         #icons {
-            float: right;
             padding: 10px 5px;
             font-size: 0;
         }
@@ -95,10 +94,35 @@
         sticky-element {
             display: block;
         }
-        #icons {
+
+        sticky-element #icons {
             position: absolute;
             right: 0;
             bottom: 0;
+        }
+
+        sticky-element[stuck] #icons {
+            top: 0;
+        }
+
+        sticky-element #header-name {
+            position: absolute;
+            left: 0;
+            padding: 10px;
+            font-size: 25px;
+            opacity: 0;
+
+            transition: opacity .1s ease;
+        }
+
+        sticky-element[stuck] #header-name {
+            transition: opacity 1s ease;
+
+            opacity: 0.75;
+        }
+
+        sticky-element:not([stuck]) {
+            height: 0;
         }
     </style>
     <script type="text/javascript">
@@ -130,6 +154,9 @@
                     <i class="fa fa-instagram"></i>
                 </a>
             </div>
+        </sticky-element>
+        <sticky-element>
+            <div id="header-name">Garrett Johnson</div>
         </sticky-element>
 
         <div class="title-buffer"></div>

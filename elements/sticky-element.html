@@ -2,12 +2,12 @@
     <template>
         <style type="text/css">
             [stuck] {
-                position: sticky;
+                position: fixed;
+                width: 100%;
                 top: 0;
-                background-color: red;
             }
         </style>
-        <div stuck$="[[stuck]]">
+        <div id="content" stuck$="[[stuck]]">
             <slot></slot>
         </div>
     </template>
@@ -29,9 +29,13 @@
 
             connectedCallback() {
                 super.connectedCallback()
+                
+
                 this._scrollFunc = () => {
-                    const rect = this.getBoundingClientRect()
-                    this.stuck = rect.top <= 0
+                    const el = this.querySelector('*') || this
+                    const height = el.offsetHeight
+
+                    this.stuck = this.getBoundingClientRect().top - height < 0
                 }
                 this._scrollFunc()
                 window.addEventListener('scroll', this._scrollFunc)
