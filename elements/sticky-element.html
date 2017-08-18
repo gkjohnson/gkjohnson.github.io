@@ -1,0 +1,49 @@
+<dom-module id="sticky-element">
+    <template>
+        <style type="text/css">
+            [stuck] {
+                position: sticky;
+                top: 0;
+                background-color: red;
+            }
+        </style>
+        <div stuck$="[[stuck]]">
+            <slot></slot>
+        </div>
+    </template>
+</dom-module>
+<script type="text/javascript">
+    (function() {
+        class StickyElement extends Polymer.Element {
+            static get is() { return 'sticky-element' }
+
+            static get properties() {
+                return {
+                    stuck: {
+                        type: Boolean,
+                        value: false,
+                        reflectToAttribute: true
+                    }
+                }
+            }
+
+            connectedCallback() {
+                super.connectedCallback()
+                this._scrollFunc = () => {
+                    const rect = this.getBoundingClientRect()
+                    this.stuck = rect.top <= 0
+                }
+                this._scrollFunc()
+                window.addEventListener('scroll', this._scrollFunc)
+            }
+
+            disconnectedCallback() {
+                super.disconnectedCallback()
+                window.removeEventListener('scroll', this._scrollFunc)
+            }
+
+        }
+        customElements.define(StickyElement.is, StickyElement)
+
+    })()
+</script>

@@ -1,6 +1,8 @@
 {
   "name": "gkjohnson.github.io",
   "dependencies": {
+    "@polymer/polymer": "^2.0.2",
+    "@webcomponents/webcomponentsjs": "^1.0.8",
     "font-awesome": "^4.7.0",
     "marked": "^0.3.6"
   },

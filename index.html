@@ -5,12 +5,13 @@
     
     <title>Garrett Johnson</title>
 
-    <!--
-        TODO: Host and bundle these locally
-    -->
+    <!-- TODO: Host and bundle these locally -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+    <script type="text/javascript" src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="./node_modules/@polymer/polymer/polymer-element.html"/>
+    <link rel="import" href="./elements/sticky-element.html"/>
     <style> 
         html, body {
             margin: 0;
@@ -40,9 +41,7 @@
         }
 
         #icons {
-            position: absolute;
-            right: 0;
-            bottom: 0;
+            float: right;
             padding: 10px 5px;
             font-size: 0;
         }
@@ -76,24 +75,66 @@
                 font-size: 7.35vw;
             }
         }
+
+        #name-box {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+        }
+
+        #name-box .buffer {
+            flex: 1;
+        }
+
+        .title-buffer {
+            height: 100vh;
+        }
+
+        sticky-element {
+            display: block;
+        }
+        #icons {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
     </style>
+    <script type="text/javascript">
+        document.onreadystatechange = () => {
+            requestAnimationFrame(() => document.body.scrollTop = 0)
+        }
+    </script>
 </head>
 <body>
-    <table><tr><td>
-        <div><span id="name">Garrett Johnson</span></div>
-        <span id="email">garrett.kjohnson@gmail.com</span>
-    </td></tr></table>
+    <div id="name-box">
+        <div class="buffer"></div>               
+        <div id="name">Garrett Johnson</div>
+        <div id="email">garrett.kjohnson@gmail.com</div>
+        <div class="buffer"></div>
+    </div>
 
-    <div id="icons">
-        <a href="https://github.com/gkjohnson" title="Github">
-            <i class="fa fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/garrett-kjohnson/" title="LinkedIn">
-            <i class="fa fa-linkedin"></i>
-        </a>
-        <a href="https://www.instagram.com/gkjohnso/" title="Instagram">
-            <i class="fa fa-instagram"></i>
-        </a>
+    <div id="content">
+        <div class="title-buffer"></div>
+
+        <sticky-element>
+            <div id="icons">
+                <a href="https://github.com/gkjohnson" title="Github">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/garrett-kjohnson/" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/gkjohnso/" title="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+        </sticky-element>
+
+        <div class="title-buffer"></div>
+        <div class="title-buffer">TEST</div>
+        <div class="title-buffer">TEST</div>
     </div>
 </body>
 </html>
