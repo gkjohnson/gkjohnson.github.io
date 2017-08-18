@@ -94,10 +94,8 @@ a:hover {
 /* Stuck Headers */
 sticky-element {
     display: block;
-}
-
-sticky-element:not([stuck]) {
     height: 0;
+
 }
 
 sticky-element #icons {

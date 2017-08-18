@@ -1,9 +1,14 @@
 <dom-module id="sticky-element">
     <template>
         <style type="text/css">
-            [stuck] {
-                position: fixed;
+            #content {
+                height: 1px;
                 width: 100%;
+                position: relative;
+            }
+            
+            #content[stuck] {
+                position: fixed;
                 top: 0;
             }
         </style>
@@ -30,11 +35,13 @@
             connectedCallback() {
                 super.connectedCallback()
                 
+                let ogHeight = 0
                 this._scrollFunc = () => {
                     const el = this.querySelector('*') || this
-                    const height = el.offsetHeight
+                    ogHeight = ogHeight || el.clientHeight
 
-                    this.stuck = this.getBoundingClientRect().top - height <= 0
+                    const ogtop =this.getBoundingClientRect().top; 
+                    this.stuck = this.getBoundingClientRect().top - ogHeight <= 0
                 }
                 this._scrollFunc()
                 window.addEventListener('scroll', this._scrollFunc)
