@@ -29,7 +29,7 @@
     <title>Garrett Johnson</title>
 
     <!-- TODO: Host and bundle these locally -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,500" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <script type="text/javascript" src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
@@ -56,15 +56,62 @@
             el.style = `top: ${pos}%; opacity: ${opacity}`
         }
 
+        const updateMenu = () => {
+            const items = document.querySelectorAll('#menu li')
+            const collection = []
+            for (let i = 0; i < items.length; i++) {
+                const menuItem = items[i]
+                const approxid = menuItem.innerText.split(' ').join('-').toLowerCase()
+                const target = document.querySelector(`.markdown [id*="${approxid}"]`)
+
+                menuItem.classList.remove('active')
+
+                collection.push({
+                    menuItem,
+                    top: target ? target.getBoundingClientRect().top : Infinity
+                })
+            }
+
+            collection.sort((a, b) => Math.abs(a.top) - Math.abs(b.top))
+
+            const focusItem = collection.shift(1).menuItem
+            if (focusItem) focusItem.classList.add('active')
+
+        }
+
+        const menuSetup = () => {
+            const menuContainer = document.querySelector('#menu')
+            menuContainer.addEventListener('click', e => {
+                const menuItem = e.target
+
+                if (menuItem.tagName.toLowerCase() !== 'li') return
+
+                const approxid = menuItem.innerText.split(' ').join('-').toLowerCase()
+                const target = document.querySelector(`.markdown [id*="${approxid}"]`)
+
+                if (target) {
+                    const rect = target.getBoundingClientRect()
+                    const scrollPos = window.pageYOffset + rect.top
+                    window.scrollTo(0, scrollPos)
+                }
+            })
+        }
+
         document.onreadystatechange = () => {
             if (document.readyState === 'interactive') {
-                requestAnimationFrame(() => document.body.scrollTop = 0)
+                menuSetup()
+
+                // TODO: It seems that you can "scroll" before this
+                // 'interactive' event is fired...
+                // requestAnimationFrame(() => document.body.scrollTop = 0)
             }
 
             updateTitlePos()
         }
 
         window.addEventListener('scroll', () => updateTitlePos())
+        window.addEventListener('scroll', () => updateMenu())
+
 
     </script>
 </head>
@@ -78,7 +125,7 @@
             </div>
         </div>
 
-        <sticky-element>
+        <sticky-element id="sticky-icon-container">
             <div id="icons">
                 <div class="buffer"></div>
                 <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson" title="Github">
@@ -95,8 +142,26 @@
     </div>
 
     <div id="content">
+        <sticky-element top-offset="50">
+            <div id="menu">
+                <div class="buffer"></div>
+                <ul>
+                    <li>Me</li>
+                    <li>ProtoSpace</li>
+                    <li>Collaborative System Analysis</li>
+                    <li>Sidekick</li>
+                    <li>Human Robotic Systems</li>
+                    <li>Spacecraft Sequencing</li>
+                    <li>Major Final Project</li>
+                    <li>CS174A Graphics Final</li>
+                    <li>CS174A Graphics Projects</li>
+                </ul>
+                </ul>
+            </div>
+        </sticky-element>
+
         <div id="projects" class="markdown">
-            <h1>Me</h1>
+            <h1 id="me">Me</h1>
             <section id="about-section">
                 <div id="about-image-container">
                     <div class="buffer"></div>

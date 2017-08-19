@@ -18,7 +18,8 @@ markdown-element {
 .markdown h3,
 .markdown h4,
 .markdown h5,
-.markdown p {
+.markdown p,
+.markdown section {
     max-width: 800px;
     margin-left:auto;
     margin-right:auto;
@@ -28,12 +29,20 @@ markdown-element {
 }
 
 .markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5 {
+    font-weight: normal;
+}
+
+
+.markdown h1,
 .markdown h2 {
     max-width: 800px;
 }
 
 .markdown p {
-    font-weight: 300;
     /*
         Material Color
         Deep Orange 500
@@ -41,7 +50,9 @@ markdown-element {
     /*border-left-color: #FF5722;*/
 }
 
-.markdown sliding-image {
+.markdown sliding-image, .markdown #about-image {
     height: 350px;
     margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 10px solid white;
 }

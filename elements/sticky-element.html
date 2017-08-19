@@ -3,12 +3,12 @@
         <style type="text/css">
             #content[stuck] {
                 position: fixed;
-                top: 0;
                 width: 100%;
+                z-index: 1000;
             }
         </style>
         <div id="wrapper">
-            <div id="content" stuck$="[[stuck]]">
+            <div id="content" stuck$="[[stuck]]" style$="[[_getTopStyle(topOffset)]]">
                 <slot></slot>
             </div>
         </div>
@@ -25,6 +25,11 @@
                         type: Boolean,
                         value: false,
                         reflectToAttribute: true
+                    },
+
+                    topOffset: {
+                        type: Number,
+                        value: 0
                     }
                 }
             }
@@ -38,7 +43,7 @@
                 this._scrollFunc = () => {
                     if (!this.stuck) wrapper.style = `height:${content.clientHeight}px`
 
-                    this.stuck = wrapper.getBoundingClientRect().top  <= 0
+                    this.stuck = wrapper.getBoundingClientRect().top  <= this.topOffset
                 }
                 window.addEventListener('scroll', this._scrollFunc)
             }
@@ -46,6 +51,10 @@
             disconnectedCallback() {
                 super.disconnectedCallback()
                 window.removeEventListener('scroll', this._scrollFunc)
+            }
+
+            _getTopStyle(offset) {
+                return `top:${offset}px;`
             }
 
         }

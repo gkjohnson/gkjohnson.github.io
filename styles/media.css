@@ -1,3 +1,14 @@
+#icons {
+    margin-top: 0;
+
+    transition: margin-top 0.2s linear;
+}
+@media (max-width: 1000px) {
+    sticky-element[stuck] #icons {
+        margin-top: -60px;
+    }
+}
+
 @media (max-width: 500px) {
     #name {
         font-size:13vw;
@@ -17,5 +28,9 @@
 
     #about-description {
         min-width: auto;
+    }
+
+    #menu {
+        display: none;
     }
 }

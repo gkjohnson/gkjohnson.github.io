@@ -15,7 +15,7 @@ body {
     animation: fade 3s ease;
 
     font-family: Roboto, helvetica, arial, sans-serif;
-    font-weight: lighter;
+    font-weight: 300;
 
     /* 
         Material Color
@@ -54,6 +54,7 @@ h5 {
     height: 100vh;
     width: 100%;
     position: relative;
+    font-weight: 100;
 }
 
 #title .center-container {
@@ -78,7 +79,6 @@ h5 {
 
 #icons {
     padding: 10px 5px;
-    font-size: 0;
 }
 
 
@@ -92,7 +92,7 @@ h5 {
 }
 
 /* Stuck Headers */
-sticky-element {
+#sticky-icon-container {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -109,7 +109,6 @@ sticky-element {
 #copyright {
     text-align: center;
     width: 100%;
-    font-weight: 300;
     font-size: 14px;
     padding: 5px 0;
     opacity: 0.5;
@@ -143,11 +142,39 @@ sticky-element {
 
 #about-image {
     width: 200px;
-    height: 200px;
+    height: 100%;
 
     background: url(../projects/images/zero-g-flight.jpeg);
     background-size: cover;
     margin: auto;
-    border-radius: 200px;
-    border: 10px solid white;
+}
+
+/* Menu */
+#menu {
+    display: flex;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    margin-right: 5px;
+    max-width: 200px;
+}
+
+#menu li {
+    margin: 5px;
+    list-style: none;
+    font-size: 14px;
+    opacity: 0.5;
+    cursor: default;
+}
+
+#menu li.active {
+    opacity: 1;
+}
+
+#menu li:hover {
+    opacity: 1;
+}
+
+#menu .buffer {
+    flex: 1;
 }
