@@ -1,5 +1,7 @@
 ## Sidekick
 
+##### Design, Prototyping
+
 ##### NASA JPL
 
 ##### 2015
@@ -10,4 +12,15 @@
 
 We put a Microsoft Hololens on the International Space Station and researched applications for augmenting astronaut procedures with spatial cues. Astronaut Scott Kelly used the device for real-time communication with ground operators.
 
-![Testing the Hololens in a Zero Gravity flight!](../projects/images/zero-g-flight.jpeg 10 55)
+![Testing the Hololens in a Zero Gravity flight!](sliding-image src=../projects/images/zero-g-flight.jpeg min-perc=10 max-perc=55)
+
+#### Prototyping
+_TODO_
+
+#### The Zero G Flight
+_TODO_
+
+#### Meeting with the Astronaut
+![Testing the Hololens in a Zero Gravity flight!](sliding-image src=../projects/images/scott-kelly-hololens.jpg min-perc=10 max-perc=55)
+
+_TODO_

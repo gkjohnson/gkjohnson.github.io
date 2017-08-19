@@ -1,5 +1,7 @@
 ## Next Generation Spacecraft Sequencing with ATHLETE
 
+##### Design, Development
+
 ##### NASA JPL
 
 ##### 2012-2014
@@ -8,7 +10,7 @@
 
 Investigated, designed, and developed prototype platform for the next generation of spacecraft visualization and operation using the JPL ATHLETE robot as a model mission. We produced web-based sequence editors and 3d visualization tools, as well as intuitive 3d interfaces for visually building and playing-back sequences.
 
-![ATHLETE Rover in the microgravity testbed](../projects/images/athlete-testbed.jpg 10 90)
+![ATHLETE Rover in the microgravity testbed](sliding-image src=../projects/images/athlete-testbed.jpg min-perc=10 max-perc=90)
 
 ### Visual Sequencing
 _TODO_

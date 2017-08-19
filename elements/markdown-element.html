@@ -31,18 +31,23 @@
                 const renderer = new marked.Renderer()
                 renderer.image = (href, title, text) => {
                     const split = href.split(' ')
-                    const min = split[1]
-                    const max = split[2]
-                    href = split[0]
+                    const singleValue = split.length === 1
+                    const tag = singleValue ? 'img' : split.shift(1)
+                    const args = {}
 
-                    return `<sliding-image
-                        title="${text}"
-                        src="${href}"
-                        min-perc="${min}"
-                        max-perc="${max}"
-                    >
-                    </sliding-image>
-                    `
+                    if (singleValue) {
+                        args.src = split[0]
+                    } else {
+                        split.forEach(arg => {
+                            arg = arg.split('=')
+                            args[arg[0]] = arg[1]
+                        })
+                    }
+
+                    let argString = ''
+                    for (let key in args) argString += ` ${key}="${args[key]}"`
+                    console.log(`<${tag} ${argString}></${tag}>`)
+                    return `<${tag} ${argString}></${tag}>`
                 }
 
                 renderer.paragraph = text => {
