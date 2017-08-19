@@ -34,13 +34,13 @@ h5 {
     margin: 5px;
 }
 
-a {
+#icons a {
     color: inherit;
     opacity: 0.25;
     transition: opacity .25s ease;
 }
 
-a:hover {
+#icons a:hover {
     opacity: 1;
 }
 

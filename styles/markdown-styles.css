@@ -3,6 +3,16 @@ markdown-element {
     margin-bottom: 100px;
 }
 
+.markdown a {
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.markdown a:hover {
+    opacity: 1;
+}
+
 .markdown h1,
 .markdown h2,
 .markdown h3,

@@ -10,9 +10,10 @@ The Integrated Model Environment is a modular spacecraft analysis and design too
 
 
 ### Research
+_TODO_
 
-### Design
-
-### Prototyping
+### Design & Prototyping
+_TODO_
 
 ### Production
+_TODO_
