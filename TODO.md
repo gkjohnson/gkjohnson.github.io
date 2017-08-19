@@ -20,7 +20,6 @@ Menu updates "focused" project as the screen scrolls
 - More images and gifs
 - Get more details on awards
 - Build process for static serving
-- Favicon
 
 ### Consider
 
@@ -33,3 +32,5 @@ Menu updates "focused" project as the screen scrolls
 - Adding Adobe skills
 - Using THREEjs project in the background
 - Use self-drawing-svg element
+- A better favicon
+- Adding signature somewhere in the page (bottom?)
