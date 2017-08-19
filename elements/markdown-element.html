@@ -25,12 +25,6 @@
                 }
             }
 
-            ready() {
-                super.ready()
-
-                console.log(marked('this is _markdown_'))
-            }
-
             _hrefObserver(href) {
                 if (!href) return
 
@@ -48,7 +42,7 @@
                         max-perc="${max}"
                     >
                     </sliding-image>
-                    <p title="${text}" class="image-description">${text}</p>`
+                    `
                 }
 
                 renderer.paragraph = text => {

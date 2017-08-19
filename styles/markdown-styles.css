@@ -1,6 +1,6 @@
 markdown-element {
     display: block;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 .markdown h1,
@@ -14,12 +14,12 @@ markdown-element {
     margin-right:auto;
     padding: 0 20px;
 
-    border-left: 2px solid transparent;
+    /*border-left: 2px solid transparent;*/
 }
 
 .markdown h1,
 .markdown h2 {
-    max-width: 840px;
+    max-width: 800px;
 }
 
 .markdown p {
@@ -28,7 +28,7 @@ markdown-element {
         Material Color
         Deep Orange 500
     */
-    border-left-color: #FF5722;
+    /*border-left-color: #FF5722;*/
 }
 
 .markdown sliding-image {
