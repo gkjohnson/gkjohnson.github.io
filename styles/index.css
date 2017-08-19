@@ -115,6 +115,32 @@ sticky-element {
     opacity: 0.5;
 }
 
+#about-section {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 200px;
+}
+
+#about-section markdown-element {
+    margin: 0;
+}
+
+#about-description {
+    flex: 5;
+    min-width: 450px;
+}
+
+#about-image-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#about-image-container .buffer {
+    flex: 1;
+}
+
 #about-image {
     width: 200px;
     height: 200px;

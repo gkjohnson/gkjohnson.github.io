@@ -96,9 +96,17 @@
 
     <div id="content">
         <div id="projects" class="markdown">
-            <div id="about-image"></div>
             <h1>Me</h1>
-            <markdown-element href="../projects/about.md"></markdown-element>
+            <section id="about-section">
+                <div id="about-image-container">
+                    <div class="buffer"></div>
+                    <div id="about-image"></div>
+                    <div class="buffer"></div>
+                </div>
+                <div id="about-description">
+                    <markdown-element href="../projects/about.md"></markdown-element>
+                </div>
+            </section>
 
             <h1>Professional Projects</h1>
             <markdown-element href="../projects/protospace.md"></markdown-element>

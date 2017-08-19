@@ -10,4 +10,12 @@
     .markdown sliding-image {
         height: 150px;
     }
+
+    #about-section {
+        display: block;
+    }
+
+    #about-description {
+        min-width: auto;
+    }
 }
