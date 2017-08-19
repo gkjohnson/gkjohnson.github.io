@@ -106,19 +106,11 @@ sticky-element {
     flex: 1;
 }
 
-/* Space */
-#space {
-    height: 300vh;
-    margin-top: -50vh;
-    background: linear-gradient(transparent 0, #0B0E33 250vh, #05071A 300vh);
-    position: relative;
-}
-
-#space #copyright {
-    color: white;
-    position: absolute;
-    bottom: 0;
+#copyright {
     text-align: center;
     width: 100%;
     font-weight: 300;
+    font-size: 14px;
+    padding: 5px 0;
+    opacity: 0.5;
 }
