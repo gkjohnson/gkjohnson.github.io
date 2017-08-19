@@ -114,3 +114,14 @@ sticky-element {
     padding: 5px 0;
     opacity: 0.5;
 }
+
+#about-image {
+    width: 200px;
+    height: 200px;
+
+    background: url(../projects/images/zero-g-flight.jpeg);
+    background-size: cover;
+    margin: auto;
+    border-radius: 200px;
+    border: 10px solid white;
+}

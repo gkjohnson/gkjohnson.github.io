@@ -7,7 +7,7 @@
         font-size: 7.35vw;
     }
 
-    sliding-image {
+    .markdown sliding-image {
         height: 150px;
     }
 }

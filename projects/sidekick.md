@@ -6,9 +6,9 @@
 
 ##### 2015
 
-[NASA is putting Microsoft's HoloLens to work in space](http://www.engadget.com/2015/06/25/nasa-microsoft-hololens-sidekick-iss/) (Engadget)
+[NASA is putting Microsoft's HoloLens to work in space](http://www.engadget.com/2015/06/25/nasa-microsoft-hololens-sidekick-iss/) _Engadget_
 
-[Watch astronauts make outer space Skype calls with HoloLens](http://www.engadget.com/2016/03/11/iss-skype-call-video/) (Engadget)
+[Watch astronauts make outer space Skype calls with HoloLens](http://www.engadget.com/2016/03/11/iss-skype-call-video/) _Engadget_
 
 We put a Microsoft Hololens on the International Space Station and researched applications for augmenting astronaut procedures with spatial cues. Astronaut Scott Kelly used the device for real-time communication with ground operators.
 
