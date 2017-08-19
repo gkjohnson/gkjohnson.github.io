@@ -1,6 +1,6 @@
 ## Sidekick
 
-##### Design, Prototyping
+![](skills-element skills={"C#":10,"Research":50,"Prototyping":50})
 
 ##### NASA JPL
 

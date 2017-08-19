@@ -1,6 +1,6 @@
 ## Human Robotic Systems
 
-##### Design, Development
+![](skills-element skills={"C/C++":5,"C#":35,"Visualization":20,"Research":20,"Prototyping":20,"Leadership":10})
 
 ##### NASA JPL
 
