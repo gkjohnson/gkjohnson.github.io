@@ -194,7 +194,8 @@
                 for (let name in skills) {
                     arr.push({
                         name,
-                        weight: skills[name].weight / tot
+                        weight: skills[name].weight / tot,
+                        description: skills[name].description
                     })
                 }
 
@@ -234,10 +235,21 @@
             /* Event Handlers */
             _skillMouseenterHandler(e) {
                 this._hovered = e.model.item.name
+
+                if (e.model.item.description) {
+                    this.dispatchEvent(new CustomEvent('display-popover', {
+                        bubbles: true,
+                        detail: {
+                            target: this.shadowRoot.querySelector('#dots li[active]'),
+                            text: e.model.item.description
+                        }
+                    }))
+                }
             }
 
             _skillMouseleaveHandler(e) {
                 this._hovered = null
+                this.dispatchEvent(new CustomEvent('close-popover', { bubbles: true }))
             }
         }
         customElements.define(SkillsElement.is, SkillsElement)
