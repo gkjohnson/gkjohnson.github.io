@@ -23,6 +23,14 @@ body {
     */
     color: #37474F;
     background-color: #F5F8FA;
+
+    /* lighter version of the above color */
+    background-color: #fcfdfd;
+}
+
+body.dark {
+    background-color: #222;
+    color: #ddd;
 }
 
 h5 {
