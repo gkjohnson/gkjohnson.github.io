@@ -28,7 +28,7 @@ Menu updates "focused" project as the screen scrolls
 - [ ] Embedding more demos from github projects
 - [ ] Making drawings for each projects
 - [ ] Adding collapse-able sections for stuff like "in the news", etc
-- [ ] Breaking the "about" section up into two columns so it doesn't take up as much space
+- [X] Breaking the "about" section up into two columns so it doesn't take up as much space
 - [ ] building something to better structure the images -- side-by-side, expandable, etc
 - [ ] Adding Adobe skills
 - [ ] Using THREEjs project in the background
