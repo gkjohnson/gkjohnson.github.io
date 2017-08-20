@@ -1,11 +1,35 @@
+/*
+    Screen scale transitions
+    and scroll mitigation
+*/
+body {
+    overflow-x: hidden;
+}
+
 #icons {
     margin-top: 0;
-
-    transition: margin-top 0.2s linear;
+    transition: margin-right 0.2s ease;
 }
-@media (max-width: 1000px) {
+
+#menu {
+    transition: right 0.2s ease;
+}
+
+#project-container:after {
+    transition: min-width 0.2s ease;
+}
+
+@media (max-width: 800px) {
     sticky-element[stuck] #icons {
-        margin-top: -60px;
+        margin-right: -200px;
+    }
+
+    #menu {
+        right: -200px;
+    }
+
+    #project-container:after {
+        min-width: 0;
     }
 }
 

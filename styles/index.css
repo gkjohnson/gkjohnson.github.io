@@ -82,13 +82,28 @@ h5 {
 }
 
 
+/* Projects */
+#project-container {
+    display: flex;
+}
+
+#project-container:before,
+#project-container:after {
+    content: "";
+    flex: 1;
+}
+
+#project-container:after {
+    /*
+        Adding buffer for the
+        menu on the right
+    */
+    min-width: 200px;
+}
+
 #projects {
     max-width: 900px;
     margin: auto;
-}
-
-#name-box .buffer {
-    flex: 1;
 }
 
 /* Stuck Headers */
@@ -105,6 +120,7 @@ h5 {
 #icons .buffer {
     flex: 1;
 }
+
 
 #copyright {
     text-align: center;
@@ -151,12 +167,18 @@ h5 {
 
 /* Menu */
 #menu {
-    display: flex;
     position: absolute;
     right: 0;
     text-align: right;
-    margin-right: 5px;
+
+    /*
+        zero out the <ul> padding
+        and margin
+    */
+    padding: 0;
+    margin: 0;
     max-width: 200px;
+
 }
 
 #menu li {
