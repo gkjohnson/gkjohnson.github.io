@@ -50,10 +50,8 @@
 
                 const lerp = (from, to, ratio) => from + (to - from) * ratio
                 const perc = lerp(min, max, ratio)
-                this.style = `
-                    background-image:url(${src});
-                    background-position-y:${perc}%;
-                `
+                this.style.backgroundImage = `url(${src})`
+                this.style.backgroundPositionY = `${perc}%`
             }
 
             connectedCallback() {
