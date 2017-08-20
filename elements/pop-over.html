@@ -67,8 +67,7 @@
                 return {
                     target: {
                         type: HTMLElement,
-                        value: null,
-                        observer: '_targetObserver'
+                        value: null
                     },
 
                     text: {
@@ -91,6 +90,10 @@
                         value: null
                     }
                 }
+            }
+
+            static get observers() {
+                return ['_contentObserver(target,text)']
             }
 
             connectedCallback() {
@@ -140,8 +143,8 @@
             }
 
             /* Observers */
-            _targetObserver(target) {
-                if (this._animationid || !target) return
+            _contentObserver(target, text) {
+                if (this._animationid || !target || !text) return
 
                 const _do = () => {
                     if (!this.target) {
