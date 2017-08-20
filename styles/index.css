@@ -184,6 +184,7 @@ h5 {
         and margin
     */
     padding: 0;
+    padding-top: 25px;
     margin: 0;
     max-width: 200px;
 
