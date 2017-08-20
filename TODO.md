@@ -6,7 +6,7 @@
 - [ ] Add tags / lists of technologies used in the tool chain for a project (Unity, Visual Studio, DirectX, etc).
 It would be nice to highlight these along side the skill hover
 - [ ] Make the skills element load from an external file so it's easier to edit and can hold more complex info
-- [ ] "Design" Skills should use cool colors, while "technical" should use warm colors
+- [X] "Design" Skills should use cool colors, while "technical" should use warm colors
 
 ### Menu
 
