@@ -1,0 +1,13 @@
+{
+    "C#": {
+        "weight": 10
+    },
+
+    "Research": {
+        "weight": 50
+    },
+
+    "Prototyping": {
+        "weight": 50
+    }
+}

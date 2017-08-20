@@ -1,6 +1,6 @@
 ## Next Generation Spacecraft Sequencing with ATHLETE
 
-![](skills-element skills={"C#":35,"HTML/CSS":20,"Javascript":20,"Research":20,"Leadership":10})
+![](skills-element src=./projects/skills/sequencing.json)
 
 ##### NASA JPL
 

@@ -1,0 +1,29 @@
+{
+    "C#": {
+        "weight": 45
+    },
+
+    "C/C++": {
+        "weight": 5
+    },
+
+    "HTML/CSS": {
+        "weight": 20
+    },
+
+    "Javascript": {
+        "weight": 20
+    },
+
+    "Research": {
+        "weight": 20
+    },
+
+    "Prototyping": {
+        "weight": 20
+    },
+
+    "Graphics": {
+        "weight": 20
+    }
+}

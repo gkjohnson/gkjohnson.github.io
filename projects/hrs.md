@@ -1,6 +1,6 @@
 ## Human Robotic Systems
 
-![](skills-element skills={"C/C++":5,"C#":35,"Visualization":20,"Research":20,"Prototyping":20,"Leadership":10,"Graphics":10})
+![](skills-element src=./projects/skills/hrs.json)
 
 ##### NASA JPL
 

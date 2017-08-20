@@ -1,6 +1,6 @@
 ## ProtoSpace
 
-![](skills-element skills={"C/C++":5,"C#":45,"HTML/CSS":20,"Javascript":20,"Research":20,"Prototyping":20,"Graphics":20})
+![](skills-element src=./projects/skills/protospace.json)
 
 ##### NASA JPL
 

@@ -1,6 +1,6 @@
 ## Sidekick
 
-![](skills-element skills={"C#":10,"Research":50,"Prototyping":50})
+![](skills-element src=./projects/skills/sidekick.json)
 
 ##### NASA JPL
 

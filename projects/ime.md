@@ -1,6 +1,6 @@
 ## Collaborative System Analysis and Design
 
-![](skills-element skills={"Python":5,"HTML/CSS":20,"Javascript":20,"Research":20,"Prototyping":20,"Leadership":40})
+![](skills-element src=./projects/skills/ime.json)
 
 ##### NASA JPL
 

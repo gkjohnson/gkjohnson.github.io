@@ -1,0 +1,21 @@
+{
+    "C#": {
+        "weight": 35
+    },
+
+    "HTML/CSS": {
+        "weight": 20
+    },
+
+    "Javascript": {
+        "weight": 20
+    },
+
+    "Research": {
+        "weight": 20
+    },
+
+    "Leadership": {
+        "weight": 10
+    }
+}

@@ -127,15 +127,15 @@
 
         </style>
 
-        <div id="container" hovered$="[[hovered]]">
+        <div id="container" hovered$="[[_hovered]]">
             <ul id="ratios">
-                <template is="dom-repeat" items="[[_processSkills(skills)]]">
+                <template is="dom-repeat" items="[[_processSkills(_skills)]]">
                     <li
                         on-mouseenter="_skillMouseenterHandler"
                         on-mouseleave="_skillMouseleaveHandler"
                         skill$="[[item.name]]"
                         style$="[[_getWidthStyle(item.weight)]]"
-                        active$="[[_equals(hovered, item.name)]]"
+                        active$="[[_equals(_hovered, item.name)]]"
                     >
                         <span>[[_toReadablePercentage(item.weight)]]</span>
                     </li>
@@ -143,11 +143,11 @@
             </ul>
 
             <ul id="dots">
-                <template is="dom-repeat" items="[[_processSkills(skills)]]">
+                <template is="dom-repeat" items="[[_processSkills(_skills)]]">
                     <li
                         on-mouseenter="_skillMouseenterHandler"
                         on-mouseleave="_skillMouseleaveHandler"
-                        active$="[[_equals(hovered, item.name)]]"
+                        active$="[[_equals(_hovered, item.name)]]"
                     >
                         <span class="dot" skill$="[[item.name]]"></span>
                         <span>[[item.name]]</span>
@@ -164,12 +164,18 @@
 
             static get properties() {
                 return {
-                    skills: {
+                    src: {
+                        type: String,
+                        value: null,
+                        observer: '_srcObserver'
+                    },
+
+                    _skills: {
                         type: Object,
                         value: () => { return {} }
                     },
 
-                    hovered: {
+                    _hovered: {
                         type: String,
                         value: null
                     }
@@ -183,12 +189,12 @@
                 const arr = []
                 let tot = 0
 
-                for (let name in skills) tot += skills[name]
+                for (let name in skills) tot += skills[name].weight
 
                 for (let name in skills) {
                     arr.push({
                         name,
-                        weight: skills[name] / tot
+                        weight: skills[name].weight / tot
                     })
                 }
 
@@ -216,13 +222,22 @@
                 return Math.floor(weight * 100) + '%'
             }
 
+            /* Observers */
+            _srcObserver(src) {
+                if (!src) return
+
+                fetch(src)
+                    .then(res => res.json())
+                    .then(json => this._skills = json)
+            }
+
             /* Event Handlers */
             _skillMouseenterHandler(e) {
-                this.hovered = e.model.item.name
+                this._hovered = e.model.item.name
             }
 
             _skillMouseleaveHandler(e) {
-                this.hovered = null
+                this._hovered = null
             }
         }
         customElements.define(SkillsElement.is, SkillsElement)
