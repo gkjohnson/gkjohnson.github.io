@@ -2,10 +2,10 @@
 
 ### Skills
 
-- [ ] Add popover to the hover state of the skills items to briefly discuss what exactly each skill was used for
+- [X] Add popover to the hover state of the skills items to briefly discuss what exactly each skill was used for
 - [ ] Add tags / lists of technologies used in the tool chain for a project (Unity, Visual Studio, DirectX, etc).
 It would be nice to highlight these along side the skill hover
-- [ ] Make the skills element load from an external file so it's easier to edit and can hold more complex info
+- [X] Make the skills element load from an external file so it's easier to edit and can hold more complex info
 - [X] "Design" Skills should use cool colors, while "technical" should use warm colors
 
 ### Menu
@@ -35,3 +35,5 @@ Menu updates "focused" project as the screen scrolls
 - [ ] Use self-drawing-svg element
 - [ ] A better favicon
 - [ ] Adding signature somewhere in the page (bottom?)
+- [ ] Add a "dev" mode that looks like a console
+- [ ] Add inlined THREEjs demo (robots?)
