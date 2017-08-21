@@ -25,13 +25,29 @@ Research task to explore new opportunities and investigate innovative approaches
 ![Robotic Operations with Jaco](sliding-image src=../projects/images/jaco-scaffold-dual.jpg min-perc=10 max-perc=90)
 
 ### Time Delay Tolerant Rover Operation
-_TODO_
+Robots are hard to control, and it get's even harder the further away they get. Our task was to research approaches to mitigating the negative effects of round-trip light and communication time to the robot, such as our rovers on Mars or Robonaut on the International Space Station. The major variables involved levels of uncertainty and error in the way a robot might move. Will the wheels slip? Will the arm sag? Visual odometry and on-board correction can account for this to some extent, but how can an operator stay ahead of the telemetry feedback and avoid waiting for a full round-trip communication loop?
 
-### VR Mars
-_TODO_
+_TODO: Insert drawing / image of telem_
+
+Our approach was to develop a basic error model of the robots operation and visualize everywhere the rover _might_ end up after performing a set of operations, so operators can take that into account and only send commands such that the rover is likely to be safe given the error model.
 
 ### Robotic Scaffolding
-_TODO_
+Related to time delayed operations, precise robot operations can be difficult to quickly control because of the finely controlled movements required to manipulate a tool. So how can we allow for quickly instructing a complex robot like Robonaut to pick something up or manipulate a tool?
+
+_TODO: Insert scaffold image_
+
+Our test platform was a robot called Jaco -- an IK-controlled, 6-DoF robot typically meant for the disabled. Our approach to the problem was to enable the user to apply structured object definitions we call "scaffolds" to the visual telemetry (a Prime Sense sensor in our case) with predefined interactions so the operator can simply instruct to "turn this", or "grab that". 
 
 ### Mighty Morphonaut
-_TODO_
+"Mighty Morphonaut" is a goofily named collaborative project with Sony's Magic Labs made with PSVR and demoed at SIGGRAPH 2015. It explores the how we might operate Robotnaut on the ISS with delayed operations while at the same time looking at previously unexplored territory such as voice chat, collaborative physics, and constrained IK arms in virtual reality.
+
+_TODO: Insert image_
+
+### VR Mars
+The commercialization of VR headsets brought the opportunity to put people on Mars in ways that hadn't been possible before, so we explored approaches to visualization the martian landscape in ways that would help our scientists better understand the world around the rover.
+
+_TODO: Insert pic of panoculus_
+
+We started with a basic approach of visualizing cylindrical panoramas before moving into surflet and 3d reconstruction. This effort eventually bloomed into Project OnSite -- a Hololens application for visualizing the most robust Mars visualization to date.
+
+

@@ -22,4 +22,4 @@ A lot of the existing approaches to building modular, MBSE analyses revolve arou
 To explore the design space, we looked at existing solutions and iterated on different ways to lay out the information -- involving our users and expertise whenever we had questions. Our designs culminated in a simple, technical prototype that demonstrated the types of information, analyses, and web-based tooling we hoped to offer, which ultimately drove our vision moving forward to production.
 
 #### Production
-_TODO_
+Once the vision for the product had been decided, the team transitioned into a production mode of operation. We used Github Enterprise for our code reviews and version control, zenhub for our two week sprints, and jenkins for our continuous integration and deployment. A dedicated set of users on our team worked with us through through every deployment to give feedback on what was and wasn't working and organize our priorities for the projects dev cycle. Our technical stack involved a concert of services built on Nodejs, ArangoDB and Foxx, Polymer, and Python with tests being built using Mocha and Chai js. 
