@@ -1,13 +1,16 @@
 {
     "C#": {
-        "weight": 10
+        "weight": 10,
+        "description": "Building small prototypes in Unity"
     },
 
     "Research": {
-        "weight": 50
+        "weight": 50,
+        "description": "Traveling to JSC to understand how ground works with astronauts"
     },
 
     "Prototyping": {
-        "weight": 50
+        "weight": 50,
+        "description": "Coming up with ways to quickly test ideas"
     }
 }

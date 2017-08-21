@@ -1,29 +1,36 @@
 {
     "C#": {
-        "weight": 45
+        "weight": 45,
+        "description": "Building our application in Unity for the Hololens platform"
     },
 
     "C/C++": {
-        "weight": 5
+        "weight": 5,
+        "description": "Preprocessing models"
     },
 
     "HTML/CSS": {
-        "weight": 20
+        "weight": 20,
+        "description": "Building web-based tooling to facilitate ProtoSpace sessions"
     },
 
     "Javascript": {
-        "weight": 20
+        "weight": 20,
+        "description": "Building web-based tooling and Nodejs services"
     },
 
     "Research": {
-        "weight": 20
+        "weight": 20,
+        "description": "Meeting with users and customers to better understand their CAD modeling process"
     },
 
     "Prototyping": {
-        "weight": 20
+        "weight": 20,
+        "description": "Quickly exploring new interaction paradigms on the controller-less Hololens platform"
     },
 
     "Graphics": {
-        "weight": 20
+        "weight": 20,
+        "description": "Rendering techniques and optimization to both render and process the models"
     }
 }

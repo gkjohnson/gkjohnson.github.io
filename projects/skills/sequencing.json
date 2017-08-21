@@ -1,21 +1,26 @@
 {
     "C#": {
-        "weight": 35
+        "weight": 35,
+        "description": "Building the ATHLETE visual sequencing tools in Unity"
     },
 
     "Research": {
-        "weight": 20
+        "weight": 20,
+        "description": "Understanding how the operaters and mechanical engineers worked with ATHLETE"
     },
 
     "HTML/CSS": {
-        "weight": 20
+        "weight": 20,
+        "description": "Building the web application front end"
     },
 
     "Javascript": {
-        "weight": 20
+        "weight": 20,
+        "description": "Building the web application, 3d web-based visualizations, and Nodejs services"
     },
 
     "Leadership": {
-        "weight": 10
+        "weight": 10,
+        "description": "Primary designer and developer on the project"
     }
 }

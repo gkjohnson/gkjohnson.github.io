@@ -1,25 +1,31 @@
 {
     "Python": {
-        "weight": 5
+        "weight": 5,
+        "description": "The backend running analyses"
     },
 
     "HTML/CSS": {
-        "weight": 20
+        "weight": 20,
+        "description": "Building the web application front end"
     },
 
     "Javascript": {
-        "weight": 20
+        "weight": 20,
+        "description": "Building the web application, Nodejs-based servers, and Arango Foxx services"
     },
 
     "Research": {
-        "weight": 20
+        "weight": 20,
+        "description": "Understanding the process and work of our users"
     },
 
     "Prototyping": {
-        "weight": 20
+        "weight": 20,
+        "description": "Iterating on a vision, getting feedback, and sharing ideas"
     },
 
     "Leadership": {
-        "weight": 40
+        "weight": 40,
+        "description": "Leading the technical implementation and design vision of the application"
     }
 }
