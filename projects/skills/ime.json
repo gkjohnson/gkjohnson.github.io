@@ -1,31 +1,37 @@
 {
     "Python": {
         "weight": 5,
-        "description": "The backend running analyses"
+        "description": "The backend running analyses",
+        "tags": ["Analysis"]
     },
 
     "HTML/CSS": {
         "weight": 20,
-        "description": "Building the web application front end"
+        "description": "Building the web application front end",
+        "tags": ["Polymer", "Collaborative"]
     },
 
     "Javascript": {
         "weight": 20,
-        "description": "Building the web application, Nodejs-based servers, and Arango Foxx services"
+        "description": "Building the web application, Nodejs-based servers, and Arango Foxx services",
+        "tags": ["Polymer", "Collaborative"]
     },
 
     "Research": {
         "weight": 20,
-        "description": "Understanding the process and work of our users"
+        "description": "Understanding the process and work of our users",
+        "tags": ["Observation", "Interviews", "User Research"]
     },
 
     "Prototyping": {
         "weight": 20,
-        "description": "Iterating on a vision, getting feedback, and sharing ideas"
+        "description": "Iterating on a vision, getting feedback, and sharing ideas",
+        "tags": ["Paper Prototypes", "Technical Prototypes", "Storyboards"]
     },
 
     "Leadership": {
         "weight": 40,
-        "description": "Leading the technical implementation and design vision of the application"
+        "description": "Leading the technical implementation and design vision of the application",
+        "tags": []
     }
 }

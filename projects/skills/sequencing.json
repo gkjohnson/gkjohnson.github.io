@@ -1,26 +1,31 @@
 {
     "C#": {
         "weight": 35,
-        "description": "Building the ATHLETE visual sequencing tools in Unity"
+        "description": "Building the ATHLETE visual sequencing tools in Unity",
+        "tags": ["Unity", "AR/VR", "Natural Input Devices"]
     },
 
     "Research": {
         "weight": 20,
-        "description": "Understanding how the operaters and mechanical engineers worked with ATHLETE"
+        "description": "Understanding how the operaters and mechanical engineers worked with ATHLETE",
+        "tags": ["Observation", "User Research", "Interviews"]
     },
 
     "HTML/CSS": {
         "weight": 20,
-        "description": "Building the web application front end"
+        "description": "Building the web application front end",
+        "tags": ["JQuery"]
     },
 
     "Javascript": {
         "weight": 20,
-        "description": "Building the web application, 3d web-based visualizations, and Nodejs services"
+        "description": "Building the web application, 3d web-based visualizations, and Nodejs services",
+        "tags": ["THREE.js", "Collaboration"]
     },
 
     "Leadership": {
         "weight": 10,
-        "description": "Primary designer and developer on the project"
+        "description": "Primary designer and developer on the project",
+        "tags": []
     }
 }
