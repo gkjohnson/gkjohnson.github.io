@@ -8,13 +8,13 @@
     "HTML/CSS": {
         "weight": 20,
         "description": "Building the web application front end",
-        "tags": ["Polymer", "Collaborative"]
+        "tags": ["Polymer", "Collaboration"]
     },
 
     "Javascript": {
         "weight": 20,
         "description": "Building the web application, Nodejs-based servers, and Arango Foxx services",
-        "tags": ["Polymer", "Collaborative"]
+        "tags": ["Polymer", "Collaboration"]
     },
 
     "Research": {
@@ -26,7 +26,7 @@
     "Prototyping": {
         "weight": 20,
         "description": "Iterating on a vision, getting feedback, and sharing ideas",
-        "tags": ["Paper Prototypes", "Technical Prototypes", "Storyboards"]
+        "tags": ["Sticky Notes", "Paper Prototypes", "Technical Prototypes", "Storyboards"]
     },
 
     "Leadership": {

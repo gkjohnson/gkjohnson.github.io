@@ -171,6 +171,8 @@ h5 {
     background: url(../projects/images/zero-g-flight.jpeg);
     background-size: cover;
     margin: auto;
+
+    height: 100%;
 }
 
 /* Menu */

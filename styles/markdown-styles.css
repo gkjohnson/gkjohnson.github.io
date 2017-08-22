@@ -50,8 +50,11 @@ markdown-element {
     /*border-left-color: #FF5722;*/
 }
 
+.markdown sliding-image {
+    height: 350px;    
+}
+
 .markdown sliding-image, .markdown #about-image {
-    height: 350px;
     margin: auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border: 10px solid white;

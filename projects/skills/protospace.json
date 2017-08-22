@@ -20,7 +20,7 @@
     "Javascript": {
         "weight": 20,
         "description": "Building web-based tooling and Nodejs services",
-        "tags": ["THREE.js", "WebGL"]
+        "tags": ["Polymer", "THREE.js", "WebGL"]
     },
 
     "Research": {
@@ -32,7 +32,7 @@
     "Prototyping": {
         "weight": 20,
         "description": "Quickly exploring new interaction paradigms on the controller-less Hololens platform",
-        "tags": ["Tags", "Interaction Design"]
+        "tags": ["Sticky Notes", "Interaction Design"]
     },
 
     "Graphics": {

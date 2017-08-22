@@ -21,7 +21,7 @@
 
             #ratios {
                 height: 4px;
-                margin-top: -10px;
+                /*margin-top: -10px;*/
                 padding-top: 10px;
 
                 transition: height 0.2s ease,padding-top 0.2s ease;
@@ -124,10 +124,33 @@
             [skill="Leadership"]    { background-color: #3F51B5; }  /* indigo 800 */
             [skill="Visualization"] { background-color: #283593; }  /* indigo 800 */
             
+            #tags span {
+                padding: 3px 5px;
+                background-color: #eee;
+                margin-bottom: 3px;
+                display: inline-block;
+                cursor: default;
+                font-size: 14px;
+            }
+
+            [hovered] #tags span:not([active]) {
+                /*opacity: 0.25;*/
+            }
+
+            [hovered] #tags span[active] {
+                background-color: #37474F;
+                color: white;
+            }
 
         </style>
 
         <div id="container" hovered$="[[_hovered]]">
+            <div id="tags">
+                <template is="dom-repeat" items="[[_processTags(_skills)]]">
+                    <span active$="[[_contains(_hovered,item.skills)]]">[[item.name]]</span>
+                </template>
+            </div>
+
             <ul id="ratios">
                 <template is="dom-repeat" items="[[_processSkills(_skills)]]">
                     <li
@@ -185,6 +208,13 @@
             /* Utilities */
             _equals(a,b) { return a === b }
 
+            _contains(sk, arr) { 
+                if (!sk || !arr) return false
+                console.log(arr.indexOf(sk) !== -1)
+
+                return arr.indexOf(sk) !== -1
+            }
+
             _processSkills(skills) {
                 const arr = []
                 let tot = 0
@@ -211,6 +241,26 @@
                     else if (a.name < b.name) return -1
                     else return 0
                 })
+
+                return arr
+            }
+
+            _processTags(skills) {
+                const tags = {}
+                for(let name in skills) {
+                    const sk = skills[name]
+                    const tagList = sk.tags
+                    for(let tag of tagList) {
+                        const lctag = tag.toLowerCase()
+                        tags[lctag] = tags[lctag] || { name: tag, skills: [] }
+                        tags[lctag].skills.push(name)
+
+                        console.log(tags[lctag].skills)
+                    }
+                }
+
+                const arr = []
+                for(let tag in tags) arr.push(tags[tag])
 
                 return arr
             }
