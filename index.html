@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- favicon insanity -->
+    <link rel="shortcut icon" href="./favicons/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="./favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="196x196" href="./favicons/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="./favicons/favicon-160.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicons/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="./favicons/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16.png">
+    <link rel="apple-touch-icon" href="./favicons/favicon-57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./favicons/favicon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./favicons/favicon-72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./favicons/favicon-144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./favicons/favicon-60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./favicons/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./favicons/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./favicons/favicon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/favicon-180.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="./favicons/favicon-144.png">
+    <meta name="msapplication-config" content="./favicons/browserconfig.xml">
+    <!-- end favicon insanity -->
+
+    <title>Garrett Johnson</title>
+
+    <!--
+        TODO: Host and bundle these locally
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--
+        Adding Events
+        https://developers.google.com/analytics/devguides/collection/gtagjs/events
+    -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125253002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-125253002-1');
+    </script>
+
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            font-family: Roboto, helvetica, arial, sans-serif;
+            text-align: center;
+            font-weight: 100;
+
+            animation: fade 3s ease;
+
+            color: #37474F;
+            background: #fcfdfd;
+        }
+
+        table {
+            height: 100%;
+            width: 100%;
+        }
+
+        #name {
+            font-size: 60px;
+        }
+
+        #info {
+            font-size: 22px;
+            font-weight: 300;
+        }
+
+        #divider {
+            font-weight: 100;
+        }
+
+        #resume {
+            opacity: 0.6;
+            text-decoration: none;
+            color: #00BCD4;
+        }
+
+        #resume:hover {
+            opacity: 1;
+        }
+
+        #icons {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 10px 5px;
+            font-size: 0;
+        }
+
+        #icons .fab {
+            font-size: 28px;
+            padding: 0 5px;
+            color: inherit;
+        }
+
+        #icons a {
+            display: inline-block;
+            overflow: hidden;
+            height: 28px;
+            opacity: 0.25;
+            transition: opacity .25s ease;
+            color: inherit;
+        }
+
+        #icons a:hover {
+            opacity: 1;
+        }
+
+        #icons a.img-icon {
+            width: 40px;
+            margin-right: 3px;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 500px) {
+    		#name {
+            	font-size:13vw;
+            }
+
+            #info {
+                font-size: 5.3vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table><tr><td>
+        <div><span id="name">Garrett Johnson</span></div>
+        <span id="info">
+            <span id="email">garrett.kjohnson@gmail.com</span>
+            <span id="divider">|</span>
+            <a
+                id="resume"
+                href="./garrett-johnson-resume.pdf"
+                target="_blank"
+                onclick="gtag('event', 'View Resume');"
+            >resume</a>
+        </span>
+    </td></tr></table>
+
+    <div id="icons">
+        <a target="_blank" onclick="gtag('event', 'View Twitter');" href="https://twitter.com/garrettkjohnson" title="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a target="_blank" onclick="gtag('event', 'View NPM');" href="https://www.npmjs.com/~gkjohnson" title="npm" class="img-icon">
+            <i class="fab fa-npm"></i>
+        </a>
+        <a target="_blank" onclick="gtag('event', 'View Github');" href="https://github.com/gkjohnson" title="Github">
+            <i class="fab fa-github"></i>
+        </a>
+        <a target="_blank" onclick="gtag('event', 'View StackOverflow');" href="https://stackoverflow.com/users/9838891/garrett-johnson" title="StackOverflow">
+            <i class="fab fa-stack-overflow"></i>
+        </a>
+        <a target="_blank" onclick="gtag('event', 'View LinkedIn');" href="https://www.linkedin.com/in/garrett-kjohnson/" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a target="_blank" onclick="gtag('event', 'View Instagram');" href="https://www.instagram.com/gkjohnso/" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</body>
+</html>

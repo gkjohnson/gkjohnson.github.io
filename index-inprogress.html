@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    
+    <!-- favicon insanity -->
+    <link rel="shortcut icon" href="./favicons/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="./favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="196x196" href="./favicons/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="./favicons/favicon-160.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicons/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="./favicons/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16.png">
+    <link rel="apple-touch-icon" href="./favicons/favicon-57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./favicons/favicon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./favicons/favicon-72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./favicons/favicon-144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./favicons/favicon-60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./favicons/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./favicons/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./favicons/favicon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/favicon-180.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="./favicons/favicon-144.png">
+    <meta name="msapplication-config" content="./favicons/browserconfig.xml">
+    <!-- end favicon insanity -->
+
+    <title>Garrett Johnson</title>
+
+    <!-- TODO: Host and bundle these locally -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,500" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script type="text/javascript" src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="./node_modules/@polymer/polymer/polymer-element.html"/>
+    <link rel="import" href="./node_modules/@polymer/polymer/lib/elements/dom-repeat.html"/>
+
+    <link rel="import" href="./elements/sticky-element.html"/>
+    <link rel="import" href="./elements/markdown-element.html"/>
+    <link rel="import" href="./elements/skills-element.html"/>
+    <link rel="import" href="./elements/sliding-image.html">
+    <link rel="import" href="./elements/pop-over.html">
+
+    <link rel="stylesheet" type="text/css" href="./styles/index.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles/markdown-styles.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles/media.css"/>
+
+    <script type="text/javascript">
+        const updateTitlePos = () => {
+            const el = document.querySelector('#title .center-container')
+            const ratio = document.body.scrollTop / window.innerHeight
+
+            const lerp = (a, b, r) => a + (b - a) * r
+            const pos = lerp(50, 90, ratio)
+            const opacity = lerp(1, 0, ratio)
+            el.style = `top: ${pos}%; opacity: ${opacity}`
+        }
+
+        const updateMenu = () => {
+            const items = document.querySelectorAll('#menu li')
+            const collection = []
+            for (let i = 0; i < items.length; i++) {
+                const menuItem = items[i]
+                const approxid = menuItem.innerText.split(' ').join('-').toLowerCase()
+                const target = document.querySelector(`.markdown [id*="${approxid}"]`)
+
+                menuItem.classList.remove('active')
+
+                collection.push({
+                    menuItem,
+                    top: target ? target.getBoundingClientRect().top : Infinity
+                })
+            }
+
+            collection.sort((a, b) => Math.abs(a.top) - Math.abs(b.top))
+
+            const focusItem = collection.shift(1).menuItem
+            if (focusItem) focusItem.classList.add('active')
+
+        }
+
+        const menuSetup = () => {
+            const menuContainer = document.querySelector('#menu')
+            menuContainer.addEventListener('click', e => {
+                const menuItem = e.target
+
+                if (menuItem.tagName.toLowerCase() !== 'li') return
+
+                const approxid = menuItem.innerText.split(' ').join('-').toLowerCase()
+                const target = document.querySelector(`.markdown [id*="${approxid}"]`)
+
+                if (target) {
+                    const rect = target.getBoundingClientRect()
+                    const scrollPos = window.pageYOffset + rect.top
+                    window.scrollTo(0, scrollPos)
+                }
+            })
+        }
+
+        document.onreadystatechange = () => {
+            if (document.readyState === 'interactive') {
+                menuSetup()
+
+                // TODO: It seems that you can "scroll" before this
+                // 'interactive' event is fired...
+                // requestAnimationFrame(() => document.body.scrollTop = 0)
+            }
+
+            updateTitlePos()
+        }
+
+        window.addEventListener('scroll', () => updateTitlePos())
+        window.addEventListener('scroll', () => updateMenu())
+
+
+    </script>
+</head>
+<body>
+    <pop-over></pop-over>
+    <div id="title">
+
+        <div class="center-container">
+            <div class="content">
+                <div id="name">Garrett Johnson</div>
+                <div id="email">garrett.kjohnson@gmail.com</div>
+            </div>
+        </div>
+
+        <sticky-element id="sticky-icon-container">
+            <div id="icons">
+                <div class="buffer"></div>
+
+                <!-- Unity Asset Store -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://assetstore.unity.com/users/152772" title="Unity Asset Store" class="img-icon">
+
+                    <!-- https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 120 155">
+                        <g xmlns="http://www.w3.org/2000/svg" transform="matrix(1.25 0 0 -1.25 -72.974 438.62)">
+                            <g transform="matrix(.19707 0 0 .19707 -56.668 -255.78)">
+                                <path d="m865.9 2856.7 77.609 134.02 37.504-134.02-37.504-133.99-77.609 133.99zm-37.829-21.76 77.622-134-135.18 34.63-97.668 99.37h155.23zm77.606 177.56-77.606-134.02h-155.23l97.668 99.37 135.17 34.65zm110.8-110.19-47.353 176.15-176.73-47.21-26.161-45.99-53.085 0.38-129.36-128.95 129.36-128.92h0.003l53.063 0.39 26.199-45.99 176.71-47.21 47.353 176.13-26.892 45.61 26.892 45.61"/>
+                            </g>
+                        </g>
+
+                    </svg>
+                </a>
+
+                <!-- Medium -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://medium.com/@gkjohnson" title="Medium">
+                    <i class="fa fa-medium"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://twitter.com/garrettkjohnson" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <!-- NPM -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://npmjs.org/~gkjohnson" title="NPM" class="img-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                        <path d="M0 4.89v5.333h4.444v.888H8v-.887h8V4.89H0zm4.444 4.443h-.888V6.666h-.89v2.667H.89V5.778h3.554v3.555zm2.667 0v.89H5.334V5.778H8.89v3.555H7.11zm8 0h-.887V6.666h-.89v2.667h-.89V6.666h-.887v2.667h-1.78V5.778h5.335v3.555zM9.778 5.778"/>
+                        <path d="M7.11 6.667H8v1.778h-.89z"/>
+                    </svg>
+                </a>
+
+                <!-- StackOverflow -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://stackoverflow.com/users/9838891/garrett-johnson" title="Github">
+                    <i class="fa fa-stack-overflow"></i>
+                </a>
+                
+                <!-- Github -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson" title="Github">
+                    <i class="fa fa-github"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://www.linkedin.com/in/garrett-kjohnson/" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a referrer="noopener noreferrerr" target="_blank" href="https://www.instagram.com/gkjohnso/" title="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+        </sticky-element>
+    </div>
+
+    <div id="content">
+        <sticky-element top-offset="45">
+            <ul id="menu">
+                <li>Me</li>
+                <li>ProtoSpace</li>
+                <li>Collaborative System Analysis</li>
+                <li>Sidekick</li>
+                <li>Spacecraft Sequencing</li>
+                <li>Human Robotic Systems</li>
+                <li>Other</li>
+                <!--                 
+                <li>Major Final Project</li>
+                <li>CS174A Graphics Final</li>
+                <li>CS174A Graphics Projects</li>
+                -->
+            </ul>
+        </sticky-element>
+
+        <div id="project-container">
+            <div id="projects" class="markdown">
+                <h1 id="me">Me</h1>
+                <section id="about-section">
+                    <div id="about-image-container">
+                        <div class="buffer"></div>
+                        <div id="about-image"></div>
+                        <div class="buffer"></div>
+                    </div>
+                    <div id="about-description">
+                        <markdown-element href="../projects/about.md"></markdown-element>
+                    </div>
+                </section>
+
+                <h1>NASA JPL Projects</h1>
+                <markdown-element href="../projects/protospace.md"></markdown-element>
+                <markdown-element href="../projects/ime.md"></markdown-element>
+                <markdown-element href="../projects/sidekick.md"></markdown-element>
+                <markdown-element href="../projects/sequencing.md"></markdown-element>
+                <markdown-element href="../projects/hrs.md"></markdown-element>
+                
+                <!--
+                <h1>College Projects</h1>
+                <markdown-element href="../projects/graphics.md"></markdown-element>
+                -->
+                <h1 id="other-projects">Smaller Projects</h1>
+                <p>
+                    <ul id="github-links">
+                        <li style="background-image:url(https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/unity/Assets/docs/asset%20store/all-urdfs.png)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/urdf-loaders/">
+                                <span>URDF-Loaders</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/threejs-fast-raycast/raw/master/docs/example-sm.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/threejs-fast-raycast">
+                                <span>THREE.js Fast Raycast</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/webgl-shader-editor/raw/master/docs/example.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/webgl-shader-editor">
+                                <span>Realtime WebGL Shader Editor</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/coordinate-frame-converter/raw/master/docs/example.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/coordinate-frame-converter">
+                                <span>Coordinate Frame Converter</span>
+                            </a>
+                        </li>
+                        <li style="background-color:#263238;">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/threading-js">
+                                <span>Threading.js</span>
+                            </a>
+                        </li>
+                        <li style="background-color:#263238;">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/react-polymer-component">
+                                <span>React Polymer Component</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/unity-clip-shader/raw/master/Docs/example-image.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/unity-clip-shader">
+                                <span>Clip Plane Unity Shader</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://raw.githubusercontent.com/gkjohnson/unity-dithered-transparency-shader/master/docs/example.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/unity-dithered-transparency-shader">
+                                <span>Dithered Transparency Unity Shader</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://raw.githubusercontent.com/gkjohnson/unity-wireframe-shader/master/docs/example.png)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/unity-wireframe-shader">
+                                <span>Wireframe Unity Shader</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/travel-photo-visualization/raw/master/docs/example.png)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/travel-photo-visualization">
+                                <span>Travel Photo EXIF Visualization</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/animated-svg-path-element/raw/master/docs/animation.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/animated-svg-path-element">
+                                <span>Self-drawing SVG Element</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/ascension-game/raw/master/docs/screenshot3.png)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/ascension-game">
+                                <span>2012 Final Graduation Project</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/cs174a-term-project/raw/master/docs/animation-sm.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/cs174a-term-project">
+                                <span>2012 Graphics Class Final</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/cs174a-projects/raw/master/docs/animated/solar-system.gif)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/cs174a-projects">
+                                <span>2012 Graphics Class Projects</span>
+                            </a>
+                        </li>
+                        <li style="background-image:url(https://github.com/gkjohnson/dma28-interactivity-projects/raw/master/docs/side-scroller.png)">
+                            <a referrer="noopener noreferrerr" target="_blank" href="https://github.com/gkjohnson/dma28-interactivity-projects">
+                                <span>2009 Processing Class Projects</span>
+                            </a>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="copyright">Garrett Johnson &copy; 2017</div>
+</body>
+</html>

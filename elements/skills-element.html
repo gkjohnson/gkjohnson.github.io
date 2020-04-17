@@ -1,0 +1,302 @@
+<dom-module id="skills-element">
+    <template>
+        <style type="text/css">
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                list-style: none;
+                flex: 1;
+                text-align: center;
+                font-weight: 300;
+                font-size: 14px;
+                cursor: default;
+            }
+
+            [hovered] li:not([active]) {
+                opacity: 0.25;
+            }
+
+            #ratios {
+                height: 4px;
+                /*margin-top: -10px;*/
+                padding-top: 8px;
+
+                transition: height 0.1s ease,padding-top 0.1s ease;
+            }
+
+            [hovered] #ratios {
+                height: 10px;
+                padding-top: 2px;
+            }
+
+            #ratios li {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                float: left;
+                color: transparent;
+                text-align: left;
+                font-size: 11px;
+                transition: color 0.2s ease;
+            }
+
+            #ratios li span {
+                display: inline-block;
+                padding: 1px;
+                padding-left: 5px;
+            }
+
+            #dots {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            #dots li {
+                padding-top: 10px;
+                min-width: 100px;
+            }
+
+            .dot {
+                display: inline-block;
+                border-radius: 10px;
+                height: 10px;
+                width: 10px;
+                margin-right: 5px;
+            }
+
+
+            /*
+                warm colors
+                red 500, 800
+                #F44336
+                #C62828
+
+                pink 500, 800
+                #E91E63
+                #AD1457
+
+                orange 800
+                #EF6C00
+
+                yellow 500, 800
+                #FFEB3B
+                #F9A825
+
+                cool colors
+                light green 500, 800
+                #8BC34A
+                #558B2F
+
+                teal 500, 800
+                #009688
+                #00695C
+
+                light blue 500, 800
+                #03A9F4
+                #0277BD
+
+                indigo 500, 800
+                #3F51B5
+                #283593
+
+
+            */
+
+            [skill="C/C++"]         { background-color: #EF6C00; }  /* orange 800 */
+            [skill="Python"]        { background-color: #F44336; }  /* red 500 */
+            [skill="Javascript"]    { background-color: #FFEB3B; }  /* yellow 500 */
+            [skill="HTML/CSS"]      { background-color: #E91E63; }  /* pink 500 */
+            [skill="C#"]            { background-color: #F9A825; }  /* yellow 800 */
+            [skill="Graphics"]      { background-color: #AD1457; }  /* pink 800 */
+
+            [skill="Prototyping"]   { background-color: #80CBC4; }  /* teal 500 */
+            [skill="Research"]      { background-color: #03A9F4; }  /* light blue 500 */
+            [skill="Leadership"]    { background-color: #3F51B5; }  /* indigo 800 */
+            [skill="Visualization"] { background-color: #283593; }  /* indigo 800 */
+            
+            #tags {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 -2px;
+            }
+            
+            #tags span {
+                padding: 3px 8px;
+                background-color: #eee;
+                margin: 2px;
+                display: inline-block;
+                cursor: default;
+                font-size: 14px;
+                flex: 1;
+                white-space: nowrap;
+                text-align: center;
+                max-width: 150px;
+            }
+
+            [hovered] #tags span:not([active]) {
+                /*opacity: 0.25;*/
+            }
+
+            [hovered] #tags span[active] {
+                background-color: #37474F;
+                color: white;
+            }
+
+        </style>
+
+        <div id="container" hovered$="[[_hovered]]">
+            <div id="tags">
+                <template is="dom-repeat" items="[[_processTags(_skills)]]">
+                    <span active$="[[_contains(_hovered,item.skills)]]">[[item.name]]</span>
+                </template>
+            </div>
+
+            <ul id="ratios">
+                <template is="dom-repeat" items="[[_processSkills(_skills)]]">
+                    <li
+                        on-mouseenter="_skillMouseenterHandler"
+                        on-mouseleave="_skillMouseleaveHandler"
+                        skill$="[[item.name]]"
+                        style$="[[_getWidthStyle(item.weight)]]"
+                        active$="[[_equals(_hovered, item.name)]]"
+                    ></li>
+               </template>
+            </ul>
+
+            <ul id="dots">
+                <template is="dom-repeat" items="[[_processSkills(_skills)]]">
+                    <li
+                        on-mouseenter="_skillMouseenterHandler"
+                        on-mouseleave="_skillMouseleaveHandler"
+                        active$="[[_equals(_hovered, item.name)]]"
+                    >
+                        <span class="dot" skill$="[[item.name]]"></span>
+                        <span>[[item.name]]</span>
+                    </li>
+               </template>
+            </ul>
+        </div>
+    </template>
+</dom-module>
+<script type="text/javascript">
+    (function() {
+        class SkillsElement extends Polymer.Element {
+            static get is() { return 'skills-element' }
+
+            static get properties() {
+                return {
+                    src: {
+                        type: String,
+                        value: null,
+                        observer: '_srcObserver'
+                    },
+
+                    _skills: {
+                        type: Object,
+                        value: () => { return {} }
+                    },
+
+                    _hovered: {
+                        type: String,
+                        value: null
+                    }
+                }
+            }
+
+            /* Utilities */
+            _equals(a,b) { return a === b }
+
+            _contains(sk, arr) { 
+                if (!sk || !arr) return false
+
+                return arr.indexOf(sk) !== -1
+            }
+
+            _processSkills(skills) {
+                const arr = []
+                let tot = 0
+
+                for (let name in skills) tot += skills[name].weight
+
+                for (let name in skills) {
+                    arr.push({
+                        name,
+                        weight: skills[name].weight / tot,
+                        description: skills[name].description
+                    })
+                }
+
+                arr.sort((a, b) => {
+                    // Sort by weight
+                    // const aw = Math.floor(a.weight * 100)
+                    // const bw = Math.floor(b.weight * 100)
+                    // if (aw > bw) return -1
+                    // else if(aw < bw) return 1
+
+                    // Sort by name
+                    if (a.name > b.name) return 1
+                    else if (a.name < b.name) return -1
+                    else return 0
+                })
+
+                return arr
+            }
+
+            _processTags(skills) {
+                const tags = {}
+                for(let name in skills) {
+                    const sk = skills[name]
+                    const tagList = sk.tags
+                    for(let tag of tagList) {
+                        const lctag = tag.toLowerCase()
+                        tags[lctag] = tags[lctag] || { name: tag, skills: [] }
+                        tags[lctag].skills.push(name)
+                    }
+                }
+
+                const arr = []
+                for(let tag in tags) arr.push(tags[tag])
+
+                return arr
+            }
+
+            _getWidthStyle(weight) {
+                return `width: ${weight*100}%`
+            }
+
+            /* Observers */
+            _srcObserver(src) {
+                if (!src) return
+
+                fetch(src)
+                    .then(res => res.json())
+                    .then(json => this._skills = json)
+            }
+
+            /* Event Handlers */
+            _skillMouseenterHandler(e) {
+                this._hovered = e.model.item.name
+
+                if (e.model.item.description) {
+                    this.dispatchEvent(new CustomEvent('display-popover', {
+                        bubbles: true,
+                        detail: {
+                            target: this.shadowRoot.querySelector('#dots li[active]'),
+                            text: e.model.item.description
+                        }
+                    }))
+                }
+            }
+
+            _skillMouseleaveHandler(e) {
+                this._hovered = null
+                this.dispatchEvent(new CustomEvent('close-popover', { bubbles: true }))
+            }
+        }
+        customElements.define(SkillsElement.is, SkillsElement)
+
+    })()
+</script>

@@ -1,0 +1,62 @@
+.markdown markdown-element,
+.markdown section {
+    display: block;
+    margin-bottom: 100px;
+}
+
+.markdown a {
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.markdown a:hover {
+    opacity: 1;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown p,
+.markdown section {
+    max-width: 800px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0 20px;
+
+    /*border-left: 2px solid transparent;*/
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5 {
+    font-weight: normal;
+}
+
+
+.markdown h1,
+.markdown h2 {
+    max-width: 800px;
+}
+
+.markdown p {
+    /*
+        Material Color
+        Deep Orange 500
+    */
+    /*border-left-color: #FF5722;*/
+}
+
+.markdown sliding-image {
+    height: 350px;    
+}
+
+.markdown sliding-image, .markdown #about-image {
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 10px solid white;
+}

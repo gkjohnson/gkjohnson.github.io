@@ -1,0 +1,19 @@
+{
+    "C#": {
+        "weight": 10,
+        "description": "Building small prototypes in Unity",
+        "tags": ["Unity", "Hololens", "AR/VR"]
+    },
+
+    "Research": {
+        "weight": 50,
+        "description": "Traveling to JSC to understand how ground works with astronauts",
+        "tags": ["Observation", "Interviews", "User Research", "Storyboards"]
+    },
+
+    "Prototyping": {
+        "weight": 50,
+        "description": "Coming up with ways to quickly test ideas",
+        "tags": ["Sticky Notes", "Interaction Design", "Low Fidelity", "Hololens", "Storyboards"]
+    }
+}

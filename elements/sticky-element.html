@@ -1,0 +1,64 @@
+<dom-module id="sticky-element">
+    <template>
+        <style type="text/css">
+            #content[stuck] {
+                position: fixed;
+                width: 100%;
+                z-index: 1000;
+            }
+        </style>
+        <div id="wrapper">
+            <div id="content" stuck$="[[stuck]]" style$="[[_getTopStyle(topOffset)]]">
+                <slot></slot>
+            </div>
+        </div>
+    </template>
+</dom-module>
+<script type="text/javascript">
+    (function() {
+        class StickyElement extends Polymer.Element {
+            static get is() { return 'sticky-element' }
+
+            static get properties() {
+                return {
+                    stuck: {
+                        type: Boolean,
+                        value: false,
+                        reflectToAttribute: true
+                    },
+
+                    topOffset: {
+                        type: Number,
+                        value: 0
+                    }
+                }
+            }
+
+            connectedCallback() {
+                super.connectedCallback()
+                
+                let ogHeight = 0
+                const wrapper = this.shadowRoot.querySelector('#wrapper')
+                const content = this.shadowRoot.querySelector('#content')
+                this._scrollFunc = () => {
+                    if (!this.stuck) wrapper.style = `height:${content.clientHeight}px`
+
+                    this.stuck = wrapper.getBoundingClientRect().top  <= this.topOffset
+                }
+                window.addEventListener('scroll', this._scrollFunc)
+            }
+
+            disconnectedCallback() {
+                super.disconnectedCallback()
+                window.removeEventListener('scroll', this._scrollFunc)
+            }
+
+            _getTopStyle(offset) {
+                return `top:${offset}px;`
+            }
+
+        }
+        customElements.define(StickyElement.is, StickyElement)
+
+    })()
+</script>

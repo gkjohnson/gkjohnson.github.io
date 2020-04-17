@@ -1,0 +1,169 @@
+<dom-module id="pop-over">
+    <template>
+        <style type="text/css">
+            :host {
+                pointer-events: none;
+            }
+
+            #popover {
+                display: none;
+                
+                position: fixed;
+                width: 0;
+                height: 0;
+                margin-top: 10px;
+                
+                z-index: 1000;
+            }
+            
+            #popover[active] {
+                display: block;
+            }
+
+            #arrow {
+                border-width: 0 5px 5px 5px;
+                border-color: transparent transparent #37474F transparent;
+                border-style: solid;
+                
+                position: absolute;
+                top: -5px;
+                left: -5px;
+            }
+
+            #content-container {
+                width: 220px;
+                position: absolute;
+            }
+
+            #content {
+                display: inline-block;
+                background-color: #37474F;
+
+                padding: 10px;
+
+                color: #fcfdfd;
+                font-size: 14px;
+                line-height: 17px;
+            }
+        </style>
+
+        <div
+            id="popover"
+            active$="[[_exists(target,text)]]"
+            style$="[[_getPosStyle(_targetRect)]]"
+        >
+            <div id="arrow"></div>
+            <div id="content-container" style$="[[_getOffsetStyle(_contentRect,_targetRect)]]">
+                <span id="content">[[text]]</span>
+            </div>
+        </div>
+    </template>
+</dom-module>
+<script type="text/javascript">
+    (function() {
+        class PopOver extends Polymer.Element {
+            static get is() { return 'pop-over' }
+
+            static get properties() {
+                return {
+                    target: {
+                        type: HTMLElement,
+                        value: null
+                    },
+
+                    text: {
+                        type: String,
+                        value: ''
+                    },
+
+                    _contentRect: {
+                        type: Object,
+                        value: null
+                    },
+
+                    _targetRect: {
+                        type: Object,
+                        value: null
+                    },
+
+                    _animationid: {
+                        type: Number,
+                        value: null
+                    }
+                }
+            }
+
+            static get observers() {
+                return ['_contentObserver(target,text)']
+            }
+
+            connectedCallback() {
+                super.connectedCallback()
+
+                this._displayFunc = e => {
+                    this.target = e.detail.target
+                    this.text = e.detail.text
+                }
+
+                this._closeFunc = () => {
+                    this.target = null
+                    this.text = ''
+                }
+
+                window.addEventListener('display-popover', this._displayFunc)
+                window.addEventListener('close-popover', this._closeFunc)
+            }
+
+            disconnectedCallback() {
+                window.removeEventListener('display-popover', this._displayFunc)
+                window.removeEventListener('close-popover', this._closeFunc)
+            }
+
+            /* Utilities */
+            _exists() {
+                let exists = true
+                for(let val of arguments) exists &= !!val
+                
+                return !!exists
+            }
+
+            _getPosStyle(rect) {
+                if (!rect) return ''
+
+                const top = rect.bottom
+                const left = rect.left + rect.width / 2
+                return `top:${top}px; left:${left}px`
+            }
+
+            _getOffsetStyle(rect, targetRect) {
+                if (!rect) return
+
+                const center = targetRect.left + targetRect.width / 2
+                const hwidth = rect.width / 2
+
+                if(center - hwidth < 5) return `left:-${center - 5}px;`
+                if(center + hwidth > window.innerWidth - 5) return `right:-${window.innerWidth - center - 5}px;`
+                return `left:-${hwidth}px;`
+            }
+
+            /* Observers */
+            _contentObserver(target, text) {
+                if (this._animationid || !target || !text) return
+
+                const _do = () => {
+                    if (!this.target) {
+                        this._animationid = null
+                        return
+                    }
+
+                    this._targetRect = this.target.getBoundingClientRect()
+                    this._contentRect = this.shadowRoot.querySelector('#content').getBoundingClientRect()
+                    this._animationid = requestAnimationFrame(_do)                    
+                }
+                _do()
+            }
+        }
+        customElements.define(PopOver.is, PopOver)
+
+    })()
+</script>

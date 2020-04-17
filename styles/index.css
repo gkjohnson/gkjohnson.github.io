@@ -1,0 +1,286 @@
+/* Animations */
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Overrides */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    animation: fade 3s ease;
+
+    font-family: Roboto, helvetica, arial, sans-serif;
+    font-weight: 300;
+
+    /* 
+        Material Color
+        Blue Gray 800
+    */
+    fill: #37474F;
+    color: #37474F;
+    background-color: #F5F8FA;
+
+    /* lighter version of the above color */
+    background-color: #fcfdfd;
+}
+
+body.dark {
+    background-color: #222;
+    color: #ddd;
+}
+
+body svg path {
+    /*
+        get the svg paths to inherit
+        from the body style
+    */
+    fill:inherit;
+}
+
+h5 {
+    /* 
+        Material Color
+        Blue Gray 200
+    */
+    color: #B0BEC5;
+    margin: 5px;
+}
+
+#icons a {
+    display: inline-block;
+    overflow: hidden;
+    color: inherit;
+    opacity: 0.25;
+    transition: opacity .25s ease;
+}
+
+#icons a:hover {
+    opacity: 1;
+}
+
+#icons a.img-icon {
+    width: 40px;
+    margin-right: 3px;
+}
+
+#icons a.img-icon img,
+#icons a.img-icon svg {
+    margin-top: -4px;
+    width: 38px;
+    height: 38px;
+}
+
+.fa {
+    font-size: 28px;
+    padding: 0 5px;
+}
+
+/* Title Section */
+#title {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    font-weight: 100;
+}
+
+#title .center-container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+
+#title .content {
+    margin-top: -60px;
+}
+
+#name {
+    text-align: center;
+    font-size: 60px;
+}
+
+#email {
+    text-align: center;
+    font-size: 33.5px;
+}
+
+#icons {
+    padding: 10px 5px;
+}
+
+
+/* Projects */
+#project-container {
+    display: flex;
+}
+
+#project-container:before,
+#project-container:after {
+    content: "";
+    flex: 1;
+}
+
+#project-container:after {
+    /*
+        Adding buffer for the
+        menu on the right
+    */
+    min-width: 200px;
+}
+
+#projects {
+    max-width: 950px;
+    margin: auto;
+}
+
+/* Stuck Headers */
+#sticky-icon-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#icons {
+    display: flex;
+}
+
+#icons .buffer {
+    flex: 1;
+}
+
+
+#copyright {
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    padding: 5px 0;
+    opacity: 0.5;
+}
+
+#about-section {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#about-section markdown-element {
+    margin: 0;
+}
+
+#about-description {
+    flex: 5;
+    min-width: 450px;
+}
+
+#about-image-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#about-image-container .buffer {
+    flex: 1;
+}
+
+#about-image {
+    width: 200px;
+    min-height: 200px;
+    height: 100%;
+
+    background: url(../projects/images/zero-g-flight.jpeg);
+    background-size: cover;
+    margin: auto;
+
+    height: 100%;
+}
+
+/* Menu */
+#menu {
+    position: absolute;
+    right: 0;
+    text-align: right;
+
+    /*
+        zero out the <ul> padding
+        and margin
+    */
+    padding: 0;
+    padding-top: 25px;
+    margin: 0;
+    max-width: 200px;
+
+}
+
+#menu li {
+    margin: 5px;
+    list-style: none;
+    font-size: 14px;
+    opacity: 0.5;
+    cursor: default;
+}
+
+#menu li.active {
+    opacity: 1;
+}
+
+#menu li:hover {
+    opacity: 1;
+}
+
+#menu .buffer {
+    flex: 1;
+}
+
+/* Extra Projects */
+ul#github-links {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: auto;
+    max-width: 800px;
+}
+
+#github-links li {
+    flex: 1;
+    position: relative;
+
+    list-style: none;
+    margin: 1px;
+    height:150px;
+    min-width: 150px;
+
+    color: white;
+    background-size: cover;
+    background-position: center;
+    
+    cursor: pointer;
+}
+
+#github-links li a {
+    opacity: 1;
+    padding: 10px;
+
+    background-color: rgba(255,255,255,0.25);
+    transition: background-color 0.2s ease;
+
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+#github-links li a:hover {
+    background-color: transparent;
+}
+
+#github-links li span {
+    position: absolute;
+    bottom: 5px;
+
+    text-shadow: 0 0 10px rgba(0,0,0,0.75);
+}

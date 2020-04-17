@@ -1,0 +1,68 @@
+/*
+    Screen scale transitions
+    and scroll mitigation
+*/
+body {
+    overflow-x: hidden;
+}
+
+#icons {
+    margin-top: 0;
+    transition: margin-right 0.2s ease, opacity 0.2s ease;
+}
+
+#menu {
+    transition: right 0.2s ease;
+}
+
+#project-container:after {
+    transition: min-width 0.2s ease;
+}
+
+@media (max-width: 800px) {
+    /*
+        TODO
+        The icons are over 200px in width, so they
+        stick out for a bit until the screen becomes
+        too small. Consider a "more" button for more
+        links or some other approach to prevent this
+    */
+    sticky-element[stuck] #icons {
+        margin-right: -200px;
+        opacity: 0;
+    }
+
+    #menu {
+        right: -200px;
+    }
+
+    #project-container:after {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    #name {
+        font-size:13vw;
+    }
+
+    #email {
+        font-size: 7.35vw;
+    }
+
+    .markdown sliding-image {
+        height: 150px;
+    }
+
+    #about-section {
+        display: block;
+    }
+
+    #about-description {
+        min-width: auto;
+    }
+
+    #menu {
+        display: none;
+    }
+}

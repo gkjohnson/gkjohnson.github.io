@@ -1,0 +1,38 @@
+{
+    "C#": {
+        "weight": 35,
+        "description": "Building all of the projects within Unity",
+        "tags": ["Unity", "AR/VR"]
+    },
+
+    "Visualization": {
+        "weight": 5,
+        "description": "Designing rover driving error visualization",
+        "tags": ["Unity", "AR/VR"]
+    },
+
+    "Graphics": {
+        "weight": 15,
+        "description": "Building shaders and post-effects in Unity",
+        "tags": ["OpenGL", "Unity", "ShaderLab", "AR/VR"]
+    },
+
+    "C/C++": {
+        "weight": 3,
+        "description": "Rendering a point-cloud visualization in Unity using a native plugin and GL_POINTS",
+        "tags": ["OpenGL", "Unity"]
+    },
+
+    "Prototyping": {
+        "weight": 20,
+        "description": "Iterating on, communicating, and testing designs and ideas",
+        "tags": ["Sticky Notes", "Technical Prototypes", "Iterative"]
+    },
+
+    "Leadership": {
+        "weight": 10,
+        "description": "Leading the direction of a couple of the projects",
+        "tags": []
+
+    }
+}
