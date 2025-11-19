@@ -3,15 +3,11 @@ import { glob } from 'glob';
 
 export default {
 
-	root: './',
+	root: './pages',
 	base: '',
 	build: {
-		outDir: './docs',
-		rollupOptions: {
-			input: glob
-				.sync( './pages/**/*.html' )
-				.map( p => `./${ p }` ),
-		},
+		outDir: '../docs',
+		emptyOutDir: true,
 	},
 	server: {
 		fs: {
