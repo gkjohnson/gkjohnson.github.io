@@ -1,0 +1,33 @@
+{
+	"root": true,
+	"extends": [ "eslint:recommended", "./node_modules/eslint-config-mdcs/index.js" ],
+	"plugins": [ "jest" ],
+	"ignorePatterns": [ "**/*.generated.js" ],
+	"rules": {
+		"no-inner-declarations": "off",
+		"no-constant-condition": "off",
+		// "no-constant-condition": [ "error", { "checkLoops": "exceptWhileTrue" } ],
+
+		"jest/no-disabled-tests": "warn",
+		"jest/no-focused-tests": "error",
+		"jest/no-identical-title": "error",
+		"jest/prefer-to-have-length": "warn",
+		"jest/valid-expect": "error"
+	},
+	"env": {
+		"jest/globals": true
+	},
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"parser": "@typescript-eslint/parser",
+			"plugins": [
+				"@typescript-eslint"
+			],
+			"rules": {
+				"no-unused-vars": ["error", { "args": "none" }],
+				"indent": ["error", "tab"]
+			}
+		}
+	]
+}
