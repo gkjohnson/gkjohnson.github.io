@@ -6,11 +6,15 @@
     "url": "git+https://github.com/gkjohnson/gkjohnson.github.io.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+		"start": "vite --config ./vite.config.js ",
+		"build": "vite build --config ./vite.config.js"
+	},
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-config-mdcs": "^5.0.0",
     "vite": "^7.1.5"
+  },
+  "dependencies": {
+    "glob": "^12.0.0"
   }
 }
